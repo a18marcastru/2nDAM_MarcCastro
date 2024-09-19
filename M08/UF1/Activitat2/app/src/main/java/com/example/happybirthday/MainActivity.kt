@@ -30,7 +30,7 @@ class MainActivity : ComponentActivity() {
             HappyBirthdayTheme {
                 // A surface container using the 'background' color from the theme
                 Surface(modifier = Modifier.fillMaxSize(), color = MaterialTheme.colorScheme.background) {
-                    GreetingImage(message = "Happy Birthday Marc!!", from = "From Emma", modifier = Modifier.padding(8.dp))
+                    GreetingImage(message = getString(R.string.happy_birthday_text), from = getString(R.string.signature_text), modifier = Modifier.padding(8.dp))
                 }
             }
         }
@@ -48,7 +48,7 @@ fun GreetingText(message: String, from: String, modifier: Modifier = Modifier) {
         )
         Text(text = from, fontSize = 36.sp, modifier = Modifier
             .padding(16.dp)
-            .align(alignment = Alignment.End))
+            .align(alignment = Alignment.CenterHorizontally))
     }
 }
 
@@ -62,7 +62,9 @@ fun GreetingImage(message: String, from: String, modifier: Modifier = Modifier) 
             contentScale = ContentScale.Crop,
             alpha = 0.5F
             )
-        GreetingText(message = message, from = from, modifier = Modifier.fillMaxSize().padding(8.dp))
+        GreetingText(message = message, from = from, modifier = Modifier
+            .fillMaxSize()
+            .padding(8.dp))
     }
 }
 
