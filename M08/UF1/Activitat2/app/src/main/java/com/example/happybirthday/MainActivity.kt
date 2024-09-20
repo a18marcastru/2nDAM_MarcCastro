@@ -31,7 +31,7 @@ class MainActivity : ComponentActivity() {
             HappyBirthdayTheme {
                 // A surface container using the 'background' color from the theme
                 Surface(modifier = Modifier.fillMaxSize(), color = MaterialTheme.colorScheme.background) {
-                    GreetingImage(message = getString(R.string.happy_birthday_text), from = getString(R.string.signature_text), modifier = Modifier.padding(8.dp))
+                    GreetingImage(message = getString(R.string.happy_birthday_text), from = getString(R.string.signature_text))
                 }
             }
         }
