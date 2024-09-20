@@ -2,6 +2,8 @@ const express = require('express')
 const app = express()
 const port = 3000
 
+app.use(express.json());
+
 const objUsers = { "users": [
     {"user": "Marc", "password": "mar13", "roles": ["admin", "edit"]},
     {"user": "Alex", "password": "ale33", "roles": ["client"]},
@@ -9,7 +11,7 @@ const objUsers = { "users": [
 ]};
 
 app.get('/auth/:user/:password', (req, res) => {
-    let obj = {user: req.params.user, password: req.params.password};
+    let objUser = {user: req.params.user, password: req.params.password};
 
     // Prueba 1
 
@@ -17,7 +19,7 @@ app.get('/auth/:user/:password', (req, res) => {
     let num = 0;
 
     for(let i = 0;i < objUsers.users.length;i++) {
-        if(objUsers.users[i].user == obj.user && objUsers.users[i].password == obj.password) {
+        if(objUsers.users[i].user == objUser.user && objUsers.users[i].password == objUser.password) {
             isAuth = true;
             num = i;
         }
@@ -39,14 +41,15 @@ app.get('/auth/:user/:password', (req, res) => {
     
 });
 
-app.post('/auth/:user/:password',(req, res) => {
-    let obj = {user: req.params.user, password: req.params.password};
+app.post('/auth',(req, res) => {
+    
+    const {user, password} = req.body;
 
     let isAuth = false;
     let num = 0;
 
     for(let i = 0;i < objUsers.users.length;i++) {
-        if(objUsers.users[i].user == obj.user && objUsers.users[i].password == obj.password) {
+        if(objUsers.users[i].user == user && objUsers.users[i].password == password) {
             isAuth = true;
             num = i;
         }
