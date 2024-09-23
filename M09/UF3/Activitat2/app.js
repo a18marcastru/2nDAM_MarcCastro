@@ -6,13 +6,14 @@ const port = 3000
 
 app.use(express.json())
 
+let numQ = [];
+
 app.get('/', (req, res) => {
     res.send('Hello')
 })
 
 app.post('/getPreguntes', (req, res) => {
-    console.log(req.body)
-    const {num} = req.body;
+    const {num} = req.query;
     const filePath = path.join(__dirname, 'Quiz.json');
 
     fs.readFile(filePath, 'utf-8', (err, data) => {
@@ -28,7 +29,6 @@ app.post('/getPreguntes', (req, res) => {
 
 function random(num, jsonData) {
 
-    let numQ = [];
     const questions = jsonData.questions;
 
     for(let i = 0;i < num;i++) {
@@ -43,6 +43,11 @@ function random(num, jsonData) {
     return newJson;
 }
 
+app.post('/finalista', (req, res) => {
+    const results = [];
+    for(let i = 0;i < req.body.length;i++) results.push(req[i].body);
+});
+
 app.listen(port, () => {
-    console.log(`Example app listening on port ${port}`)
-})
+    console.log(`Example app listening on port ${port}`);
+});
