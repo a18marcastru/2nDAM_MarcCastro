@@ -1,4 +1,5 @@
 const express = require('express')
+const { v4: uuidv4 } = require('uuid');
 const fs = require('fs')
 const path = require('path')
 const app = express()
@@ -6,10 +7,12 @@ const port = 3000
 
 app.use(express.json())
 
-let numQ = [];
+let quizJson
+let mySession = []
+let jsonOriginal
 
 app.get('/', (req, res) => {
-    res.send('Hello')
+    
 })
 
 app.post('/getPreguntes', (req, res) => {
@@ -22,7 +25,11 @@ app.post('/getPreguntes', (req, res) => {
 
             const newData = JSON.parse(data)
 
-            res.json(random(num, newData))
+            quizJson = random(num, newData)
+
+            getMySessionId(req.query["sessionId"], jsonOriginal);
+
+            res.json(quizJson)
         }
     })
 })
@@ -30,10 +37,17 @@ app.post('/getPreguntes', (req, res) => {
 function random(num, jsonData) {
 
     const questions = jsonData.questions;
+    let numQ = [];
 
     for(let i = 0;i < num;i++) {
         numQ[i] = questions[Math.floor(Math.random() * questions.length)];
     }
+
+    jsonOriginal = numQ.map(q => ({
+        question: q.question,
+        answers: q.answers,
+        correctIndex: q.correctIndex
+    }));
 
     const newJson = numQ.map(q => ({
         question: q.question,
@@ -43,9 +57,34 @@ function random(num, jsonData) {
     return newJson;
 }
 
+function getMySessionId(sessionId, jsonOriginal){
+    if(!sessionId){
+        sessionId = uuidv4();
+        let obj = {};
+        obj.sessionId = sessionId;
+        obj.data = jsonOriginal;
+        mySession[sessionId] = obj;
+    }
+}
+
 app.post('/finalista', (req, res) => {
-    const results = [];
-    for(let i = 0;i < req.body.length;i++) results.push(req[i].body);
+    const results = req.body
+
+    const sessionKey = Object.keys(mySession)[0];
+
+    const sessionData = mySession[sessionKey].data
+
+    let count = 0;
+
+    sessionData.forEach(item => {
+        if(sessionData[])
+    });
+
+    res.json({"total": sessionData.length})
+
+    // const resultsOriginal = mySession.data.correctIndex;
+
+    // console.log(resultsOriginal)
 });
 
 app.listen(port, () => {
