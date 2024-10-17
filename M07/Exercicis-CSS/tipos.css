@@ -1,0 +1,41 @@
+#fontfamily .exemple:nth-of-type(2) {
+    font-family: "Times New Roman", Times, serif;
+}
+
+#fontfamily .exemple:nth-of-type(3) {
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+#texttransform .exemple:nth-of-type(2) {
+    text-transform: capitalize;
+}
+
+#texttransform .exemple:nth-of-type(3) {
+    text-transform: uppercase;
+}
+
+#textshadow .exemple:nth-of-type(2) {
+    text-shadow: 2px 2px 8px #FF0000;
+}
+
+#textshadow .exemple:nth-of-type(3) {
+    text-shadow: 0 0 3px #FF0000, 0 0 5px #0000FF;
+}
+
+#wordspacing .exemple:nth-of-type(2) {
+    word-spacing: 1px;
+}
+
+#wordspacing .exemple:nth-of-type(3) {
+    word-spacing: 5rem;
+}
+
+#textoverflow .exemple:nth-of-type(2) {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+#textoverflow .exemple:nth-of-type(3) {
+    font-family:sans-serif
+}

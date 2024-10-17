@@ -1,0 +1,76 @@
+body {
+    background-color: azure;
+}
+
+h1 {
+    text-align: center;
+}
+
+.fitxa {
+    border: 3px solid #666;
+    padding: 10px;
+    margin: auto;
+    margin-bottom: .5rem;
+    max-width: 600px;
+}
+
+.fitxa h2 {
+    text-align: center;
+    border-bottom: 1px solid black;
+}
+
+.fitxa>.explicacio {
+    background-color: #111;
+    color: white;
+    padding: 10px;
+    border-radius: 20px;
+    margin-bottom: 1rem;
+}
+
+.fitxa .exemple {
+    padding: 1rem;
+    width: 60%;
+    margin: auto;
+    text-align: center;
+    color: white;
+    margin-bottom: .5rem;
+    border-radius: 10px;
+}
+
+.fitxa .exemple:hover {
+    border-radius: 1px;
+}
+
+.fitxa .exemple:nth-child(odd) {
+    background-color: #006aff;
+}
+
+.fitxa .exemple:nth-child(even) {
+    background-color: #0f0;
+}
+
+#fitxesprincipal {
+    display: grid;
+    grid-template-columns: 1fr;
+}
+
+/* Mobil */
+@media screen and (max-width: 600px) {
+    body {background-color: yellow;}
+}
+
+/* Tablet */
+@media screen and (min-width: 600px){
+    body {background-color: green;}
+    #fitxesprincipal {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+/* Desktop */
+@media screen and (min-width: 1200px){
+    body {background-color: red;}
+    #fitxesprincipal {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
