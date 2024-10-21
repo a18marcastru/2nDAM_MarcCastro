@@ -8,7 +8,7 @@ const dialogVisible = ref(false);
 const selectedMovie = ref('');
 
 async function searchMovies() {
-  const url = `http://www.omdbapi.com/?s=${searchQuery.value}&apikey=19f8a30e`;
+  const url = `http://www.omdbapi.com/?s=${searchQuery.value}&apikey=API`;
 
   try {
     const response = await axios.get(url);
@@ -22,7 +22,7 @@ async function openMovieInfo (movie) {
   dialogVisible.value = true;
   const title = movie.Title
 
-  const url = `http://www.omdbapi.com/?t=${title}&apikey=19f8a30e`;
+  const url = `http://www.omdbapi.com/?t=${title}&apikey=API`;
 
   try {
     const response = await axios.get(url);
