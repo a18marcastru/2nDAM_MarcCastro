@@ -1,0 +1,61 @@
+{
+    "ComponentsInterfície": [
+        {
+            "tema": "Controls de Navegació",
+            "elements": [
+                "Menús",
+                "Barres de navegació",
+                "Enllaços",
+                "Pestanyes"
+            ]
+        },
+        {
+            "tema": "Controls d'Entrada",
+            "elements": [
+                "Camps de text",
+                "Botons",
+                "Caselles de selecció",
+                "Botons de ràdio",
+                "Llistes desplegables",
+                "Selectors de data/hora"
+            ]
+        },
+        {
+            "tema": "Elements Informatius",
+            "elements": [
+                "Etiquetes",
+                "Missatges emergents",
+                "Avisos",
+                "Icones",
+                "Barra d'estat"
+            ]
+        },
+        {
+            "tema": "Estructures de Contingut",
+            "elements": [
+                "Seccions",
+                "Taules",
+                "Llistes",
+                "Panells"
+            ]
+        },
+        {
+            "tema": "Elements Multimèdia",
+            "elements": [
+                "Imatges",
+                "Vídeos",
+                "Gràfics",
+                "Àudio"
+            ]
+        },
+        {
+            "tema": "Components Interactius",
+            "elements": [
+                "Formularis",
+                "Carrousels",
+                "Mapes interactius",
+                "Animacions"
+            ]
+        }
+    ]
+}

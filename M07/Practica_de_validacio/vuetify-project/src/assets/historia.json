@@ -1,0 +1,39 @@
+{
+    "IntroduccióHistòrica": [
+        {
+            "Any": "1945",
+            "Teòric": "Vannevar Bush",
+            "Contribució": "Va proposar el concepte de Memex, precursor dels hiperenllaços i de la navegació moderna."
+        },
+        {
+            "Any": "1960s",
+            "Teòric": "Douglas Engelbart",
+            "Contribució": "Va inventar el ratolí i va demostrar els primers sistemes d'hipertext i col·laboració en línia."
+        },
+        {
+            "Any": "1970s",
+            "Teòric": "Alan Kay (Xerox PARC)",
+            "Contribució": "Va desenvolupar el concepte de la interfície gràfica d'usuari (GUI) i va influir en el disseny dels sistemes operatius moderns."
+        },
+        {
+            "Any": "1980s",
+            "Teòric": "Donald Norman",
+            "Contribució": "Va popularitzar el concepte de 'disseny centrat en l'usuari' i va escriure 'The Design of Everyday Things'."
+        },
+        {
+            "Any": "1990s",
+            "Teòric": "Jakob Nielsen",
+            "Contribució": "Conegut com el 'guru de la usabilitat', va establir principis i heurístiques per avaluar la usabilitat de les interfícies."
+        },
+        {
+            "Any": "2000s",
+            "Teòric": "Steve Krug",
+            "Contribució": "Autor de 'Don't Make Me Think', enfocant-se en la simplicitat i claredat en el disseny web."
+        },
+        {
+            "Any": "2010s",
+            "Teòric": "Jesse James Garrett",
+            "Contribució": "Va introduir el concepte d'Experiència d'Usuari (UX) amb el seu llibre 'The Elements of User Experience'."
+        }
+    ]
+}

@@ -1,0 +1,144 @@
+{
+    "TasquesPreviesDesenvolupament": [
+        {
+            "Tasca": "Identificació del públic objectiu",
+            "Descripció": [
+                "Definir qui són els usuaris potencials de la interfície.",
+                "Comprendre les seves necessitats, expectatives i limitacions tècniques."
+            ]
+        },
+        {
+            "Tasca": "Recerca de mercat i usuaris",
+            "Descripció": [
+                "Realitzar enquestes, entrevistes i grups de discussió per obtenir insights.",
+                "Analitzar les tendències del mercat i els competidors per identificar oportunitats i reptes."
+            ]
+        },
+        {
+            "Tasca": "Anàlisi de necessitats i requisits",
+            "Descripció": [
+                "Recopilar requisits funcionals i no funcionals a través de reunions amb stakeholders.",
+                "Establir objectius clars i mesurables per al projecte."
+            ]
+        },
+        {
+            "Tasca": "Creació de persones i perfils d'usuari",
+            "Descripció": [
+                "Desenvolupar personatges ficticis que representin els diferents tipus d'usuaris.",
+                "Incloure informació demogràfica, motivacions, objectius i frustracions."
+            ]
+        },
+        {
+            "Tasca": "Anàlisi de tasques i escenaris d'ús",
+            "Descripció": [
+                "Identificar les tasques que els usuaris necessiten realitzar amb la interfície.",
+                "Crear escenaris que descriguin com els usuaris interactuaran amb el sistema."
+            ]
+        },
+        {
+            "Tasca": "Estudi de l'argot i terminologia del domini",
+            "Descripció": [
+                "Comprendre el llenguatge específic utilitzat pels usuaris en el context de la interfície.",
+                "Assegurar que la terminologia emprada és familiar i coherent per a l'usuari."
+            ]
+        },
+        {
+            "Tasca": "Revisió i anàlisi de solucions existents",
+            "Descripció": [
+                "Examinar productes similars per identificar bones pràctiques i errors a evitar.",
+                "Aprendre de les experiències d'altres per millorar el propi disseny."
+            ]
+        },
+        {
+            "Tasca": "Definició de guies i estàndards de disseny",
+            "Descripció": [
+                "Establir pautes per a la consistència visual i funcional (colors, tipografies, estils).",
+                "Decidir sobre pautes d'interacció i navegació que s'aplicaran a tota la interfície."
+            ]
+        },
+        {
+            "Tasca": "Planificació de l'accessibilitat",
+            "Descripció": [
+                "Identificar les necessitats d'usuaris amb discapacitats.",
+                "Planificar per complir amb estàndards com les WCAG (Web Content Accessibility Guidelines)."
+            ]
+        },
+        {
+            "Tasca": "Establiment d'objectius de usabilitat",
+            "Descripció": [
+                "Definir mètriques clau com el temps per completar tasques o la taxa d'errors.",
+                "Establir criteris per avaluar l'èxit de la interfície en termes de usabilitat."
+            ]
+        },
+        {
+            "Tasca": "Disseny conceptual i ideació",
+            "Descripció": [
+                "Generar idees inicials a través de sessions de brainstorming.",
+                "Crear mapes mentals i diagrames per visualitzar l'estructura i fluxos de la interfície."
+            ]
+        },
+        {
+            "Tasca": "Creació de fluxos d'usuari i arquitectura d'informació",
+            "Descripció": [
+                "Mapar els camins que els usuaris seguiran per completar tasques.",
+                "Organitzar i estructurar la informació de manera lògica i intuïtiva."
+            ]
+        },
+        {
+            "Tasca": "Wireframing i prototipat de baixa fidelitat",
+            "Descripció": [
+                "Desenvolupar esbossos simples per definir la disposició dels elements a les pantalles.",
+                "Utilitzar aquests wireframes per discutir i refinar idees amb l'equip i stakeholders."
+            ]
+        },
+        {
+            "Tasca": "Planificació de continguts",
+            "Descripció": [
+                "Decidir quin contingut es necessita i com es presentarà.",
+                "Preparar esborranys de textos, imatges i altres elements multimèdia."
+            ]
+        },
+        {
+            "Tasca": "Consideració de factors culturals i internacionals",
+            "Descripció": [
+                "Tenir en compte adaptacions per a diferents idiomes i cultures si és necessari.",
+                "Assegurar que els símbols, colors i imatges són apropiats per a tots els públics objectiu."
+            ]
+        },
+        {
+            "Tasca": "Establiment del cronograma i recursos",
+            "Descripció": [
+                "Definir un pla de projecte amb fites i terminis clars.",
+                "Assignar recursos i responsabilitats dins de l'equip de treball."
+            ]
+        },
+        {
+            "Tasca": "Coordinació amb equips multidisciplinaris",
+            "Descripció": [
+                "Col·laborar amb desenvolupadors, dissenyadors gràfics, especialistes en UX/UI i altres.",
+                "Assegurar una comunicació fluida per alinear objectius i expectatives."
+            ]
+        },
+        {
+            "Tasca": "Avaluació de riscos i limitacions tècniques",
+            "Descripció": [
+                "Identificar possibles restriccions tecnològiques o de recursos.",
+                "Planificar estratègies per mitigar aquests riscos abans de la implementació."
+            ]
+        },
+        {
+            "Tasca": "Preparació per a proves amb usuaris",
+            "Descripció": [
+                "Planificar com i quan es realitzaran proves de usabilitat.",
+                "Reclutar usuaris representatius per avaluar prototips futurs."
+            ]
+        },
+        {
+            "Tasca": "Definició de mètriques i eines d'avaluació",
+            "Descripció": [
+                "Establir com es mesuraran els resultats de les proves de usabilitat.",
+                "Seleccionar eines i mètodes per recopilar i analitzar dades."
+            ]
+        }
+    ]
+}

@@ -1,0 +1,113 @@
+{
+    "LlistaVerificacióUsabilitat": [
+        {
+            "Criteri": "Claredat i simplicitat",
+            "Preguntes": [
+                "La informació es presenta de manera clara i concisa?",
+                "Hi ha elements innecessaris que poden distreure l'usuari?"
+            ]
+        },
+        {
+            "Criteri": "Consistència visual i funcional",
+            "Preguntes": [
+                "Els estils de colors, tipografies i icones són coherents amb la resta de l'aplicació?",
+                "Les accions i comportaments dels elements interactius són consistents?"
+            ]
+        },
+        {
+            "Criteri": "Visibilitat de l'estat del sistema",
+            "Preguntes": [
+                "L'usuari està informat sobre el que està passant (per exemple, processos en curs, estats de càrrega)?",
+                "Hi ha indicadors clars per a errors o èxits d'accions?"
+            ]
+        },
+        {
+            "Criteri": "Control i llibertat de l'usuari",
+            "Preguntes": [
+                "L'usuari pot desfer accions o sortir de processos fàcilment?",
+                "Hi ha opcions per a navegar cap enrere o cancel·lar accions?"
+            ]
+        },
+        {
+            "Criteri": "Anticipació de les necessitats de l'usuari",
+            "Preguntes": [
+                "La pantalla proporciona suggeriments o ajuda contextual?",
+                "Els elements necessaris per a completar una tasca estan fàcilment accessibles?"
+            ]
+        },
+        {
+            "Criteri": "Reducció de la càrrega cognitiva",
+            "Preguntes": [
+                "L'usuari necessita recordar informació d'una pantalla a una altra?",
+                "Es minimitza la quantitat d'informació que l'usuari ha de processar alhora?"
+            ]
+        },
+        {
+            "Criteri": "Prevenció i recuperació d'errors",
+            "Preguntes": [
+                "Es prevenen errors comuns mitjançant el disseny (per exemple, desactivant opcions no vàlides)?",
+                "Els missatges d'error són clars i ofereixen solucions o passos següents?"
+            ]
+        },
+        {
+            "Criteri": "Feedback immediat",
+            "Preguntes": [
+                "El sistema respon ràpidament a les accions de l'usuari?",
+                "Hi ha confirmacions visuals o auditives després de realitzar una acció?"
+            ]
+        },
+        {
+            "Criteri": "Accessibilitat",
+            "Preguntes": [
+                "La pantalla compleix amb les pautes d'accessibilitat (per exemple, contrast adequat, text alternatiu per a imatges)?",
+                "Es pot navegar per la interfície mitjançant el teclat o dispositius d'assistència?"
+            ]
+        },
+        {
+            "Criteri": "Eficàcia i eficiència d'ús",
+            "Preguntes": [
+                "Les tasques es poden completar amb un nombre mínim de passos?",
+                "Hi ha dreceres o opcions avançades per a usuaris experts?"
+            ]
+        },
+        {
+            "Criteri": "Orientació i navegació clara",
+            "Preguntes": [
+                "L'usuari sap en tot moment on es troba dins de l'aplicació?",
+                "Hi ha elements de navegació intuïtius per moure's per la interfície?"
+            ]
+        },
+        {
+            "Criteri": "Compatibilitat i adaptabilitat",
+            "Preguntes": [
+                "La pantalla es visualitza correctament en diferents dispositius i mides de pantalla?",
+                "Els elements interactius funcionen en tots els navegadors o sistemes operatius suportats?"
+            ]
+        },
+        {
+            "Criteri": "Seguretat i privacitat",
+            "Preguntes": [
+                "Es protegeixen les dades de l'usuari adequadament?",
+                "Es proporciona informació sobre la política de privacitat i l'ús de dades?"
+            ]
+        },
+        {
+            "Criteri": "Estètica i disseny minimalista",
+            "Preguntes": [
+                "El disseny és atractiu i professional?",
+                "S'utilitza l'espai en blanc per millorar la llegibilitat i enfocament?"
+            ]
+        },
+        {
+            "Criteri": "Lenguatge i comunicació",
+            "Preguntes": [
+                "S'utilitza un llenguatge clar i comprensible per a l'usuari objectiu?",
+                "Les instruccions i etiquetes són concises i informatives?"
+            ]
+        },
+        {
+            "Criteri": "",
+            "Preguntes": [ "","" ]
+        }
+    ]
+}
