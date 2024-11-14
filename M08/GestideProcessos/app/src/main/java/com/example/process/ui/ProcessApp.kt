@@ -11,6 +11,6 @@ fun ProcessApp() {
     val mongo = viewModel.mongo.value
     val mysql = viewModel.mysql.value
     if (apis != null && mongo != null && mysql != null) {
-        ProcessScreen(apis, mongo, mysql)
+        ProcessScreen(apis, mongo, mysql, viewModel)
     }
 }

@@ -20,3 +20,7 @@ data class Mysql(
     val button2: String,
     val button3: String
 )
+
+data class StartFunctionRequest(
+    val title: String
+)
