@@ -1,10 +1,12 @@
 package com.example.process.ui.network
 
+import com.example.process.ui.model.ProcessesResponse
 import com.example.process.ui.model.StartFunctionRequest
 import retrofit2.Call
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.http.Body
+import retrofit2.http.GET
 import retrofit2.http.POST
 
 object RetrofitInstance {
@@ -23,6 +25,9 @@ object RetrofitInstance {
 }
 
 interface ProcessApi {
+    @GET("processes")
+    fun getProcesses(): Call<ProcessesResponse>
+
     @POST("startFunctions")
-    fun postFunctions(@Body startFunctionRequest: StartFunctionRequest): Call<Unit>
+    fun postFunctions(@Body request: StartFunctionRequest): Call<Unit>
 }
