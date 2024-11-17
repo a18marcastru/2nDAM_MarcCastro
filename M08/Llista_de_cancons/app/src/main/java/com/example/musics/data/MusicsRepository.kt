@@ -3,6 +3,7 @@ package com.example.musics.data
 import android.util.Log
 import com.example.musics.model.MusicRequest
 import com.example.musics.model.MusicsResponse
+import com.example.musics.model.UpdateMusicRequest
 import com.example.musics.network.RetrofitInstance
 import retrofit2.Call
 import retrofit2.Callback
@@ -46,8 +47,8 @@ fun postNewMusicFromApi(request: MusicRequest) {
     })
 }
 
-fun updateMusicIdFromApi(musicId: Int, musicName: String) {
-    val call = RetrofitInstance.api.updateMusic(musicId, musicName)
+fun updateMusicIdFromApi(musicId: Int, updateMusic: UpdateMusicRequest) {
+    val call = RetrofitInstance.api.updateMusic(musicId, updateMusic)
 
     call.enqueue(object : Callback<Unit> {
         override fun onResponse(call: Call<Unit>, response: Response<Unit>) {

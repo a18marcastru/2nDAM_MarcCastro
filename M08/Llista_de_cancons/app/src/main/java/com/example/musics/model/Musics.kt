@@ -12,3 +12,7 @@ data class MusicsResponse(
 data class MusicRequest(
     val title: String
 )
+
+data class UpdateMusicRequest(
+    val title: String
+)

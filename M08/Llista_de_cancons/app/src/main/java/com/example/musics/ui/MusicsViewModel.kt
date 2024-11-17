@@ -10,6 +10,7 @@ import com.example.musics.data.updateMusicIdFromApi
 import com.example.musics.model.Music
 import com.example.musics.model.MusicRequest
 import com.example.musics.model.MusicsResponse
+import com.example.musics.model.UpdateMusicRequest
 import com.google.gson.Gson
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
@@ -57,7 +58,6 @@ class MusicsViewModel : ViewModel() {
     }
 
     private val onNewMusic = Emitter.Listener { args ->
-        Log.d("Hola", "Hola")
         val data = args[0] as String
         val newMusic = Gson().fromJson(data, Music::class.java)
 
@@ -68,10 +68,20 @@ class MusicsViewModel : ViewModel() {
 
     private val onUpdateMusic = Emitter.Listener { args ->
         val data = args[0] as String
+        val updatedMusic = Gson().fromJson(data, Music::class.java)
 
         _uiState.update { currentState ->
-            currentState.copy()
+            currentState.copy(
+                musics = currentState.musics.map { music ->
+                    if (music.id == updatedMusic.id) {
+                        music.copy(name = updatedMusic.name)
+                    } else {
+                        music
+                    }
+                }
+            )
         }
+        Log.d("data", _uiState.value.toString())
     }
     
     private val onDeleteMusic = Emitter.Listener { args ->
@@ -90,8 +100,9 @@ class MusicsViewModel : ViewModel() {
     }
 
     fun updateMusic(musicId: Int, musicName: String) {
+        var updateMusic = UpdateMusicRequest(title = musicName)
         viewModelScope.launch {
-            updateMusicIdFromApi(musicId, musicName)
+            updateMusicIdFromApi(musicId, updateMusic)
         }
     }
 

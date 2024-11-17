@@ -2,6 +2,7 @@ package com.example.musics.network
 
 import com.example.musics.model.MusicRequest
 import com.example.musics.model.MusicsResponse
+import com.example.musics.model.UpdateMusicRequest
 import retrofit2.Call
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
@@ -35,7 +36,7 @@ interface MusicApi {
     fun postNewMusic(@Body request: MusicRequest): Call<Unit>
 
     @PUT("updateMusic/{id}")
-    fun updateMusic(@Path("id") id: Int, name: String): Call<Unit>
+    fun updateMusic(@Path("id") id: Int, @Body updateMusicRequest: UpdateMusicRequest): Call<Unit>
 
     @DELETE("deleteMusic/{id}")
     fun deleteMusicId(@Path("id") id: Int): Call<Unit>

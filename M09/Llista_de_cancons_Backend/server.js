@@ -32,10 +32,6 @@ app.get('/musics', (req, res) => {
     })
 });
 
-server.listen(port, () => {
-    console.log(`localhost:${port}`);
-});
-
 app.post('/newMusic', (req, res) => {
     const { title } = req.body;
 
@@ -67,6 +63,38 @@ app.post('/newMusic', (req, res) => {
     });
 });
 
+app.put('/updateMusic/:id', (req, res) => {
+    const id = parseInt(req.params.id)
+    const { title } = req.body;
+
+    console.log(title)
+
+    fs.readFile(musicPath, 'utf8', (err, data) => {
+        let musicsData = JSON.parse(data);
+        
+        musicsData.musics.forEach(element => {
+            if(element.id === id) element.name = title
+        });
+
+        const updateMusic = {
+            id: id,
+            name: title
+        }
+
+        console.log(musicsData)
+
+        fs.writeFile(musicPath, JSON.stringify(musicsData, null, 2), (writeErr) => {
+            if (writeErr) {
+                console.error('Error al escribir en el archivo:', writeErr);
+                return res.status(500).json({ message: 'Error al guardar la música' });
+            }
+
+            io.emit('updateMusic', JSON.stringify(updateMusic));
+            res.status(200).json({ message: 'Música actualizada', id });
+        });
+    });
+});
+
 app.delete('/deleteMusic/:id', (req, res) => {
     const id = parseInt(req.params.id)
 
@@ -90,4 +118,8 @@ app.delete('/deleteMusic/:id', (req, res) => {
             res.status(200).json({ message: 'Música eliminada exitosamente', id });
         });
     });
+});
+
+server.listen(port, () => {
+    console.log(`localhost:${port}`);
 });
