@@ -37,6 +37,7 @@ class MusicsViewModel : ViewModel() {
                 }
             }
         }
+
         viewModelScope.launch {
             try {
                 mSocket = IO.socket("http://10.0.2.2:3010")
@@ -99,12 +100,12 @@ class MusicsViewModel : ViewModel() {
         }
     }
 
-    fun updateMusic(musicId: Int, musicName: String) {
-        var updateMusic = UpdateMusicRequest(title = musicName)
-        viewModelScope.launch {
-            updateMusicIdFromApi(musicId, updateMusic)
-        }
-    }
+//    fun updateMusic(musicId: Int, musicName: String) {
+//        var updateMusic = UpdateMusicRequest(title = musicName)
+//        viewModelScope.launch {
+//            updateMusicIdFromApi(musicId, updateMusic)
+//        }
+//    }
 
     fun deleteMusic(musicId: Int) {
         viewModelScope.launch {

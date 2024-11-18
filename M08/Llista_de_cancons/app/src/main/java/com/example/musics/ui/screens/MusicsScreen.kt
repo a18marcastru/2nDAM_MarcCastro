@@ -36,12 +36,17 @@ fun MusicsScreen(musics: List<Music>, viewModel: MusicsViewModel) {
             }
         }
         items(musics) { music ->
-            var editedName by remember { mutableStateOf(music.name) }
+//            var editedName by remember { mutableStateOf(music.name) }
             Row() {
                 Text(text = music.name, modifier = Modifier.padding(20.dp))
-                Button(onClick = { viewModel.updateMusic(music.id, editedName) }) {
-                    Text(text = "Editar")
-                }
+//                TextField(
+//                    value = editedName,
+//                    onValueChange = { editedName = it },
+//                    modifier = Modifier.weight(1f)
+//                )
+//                Button(onClick = { viewModel.updateMusic(music.id, editedName) }) {
+//                    Text(text = "Editar")
+//                }
                 Button(onClick = { viewModel.deleteMusic(music.id)}) {
                     Text(text = "Eliminar")
                 }
