@@ -104,10 +104,6 @@
                 "S'utilitza un llenguatge clar i comprensible per a l'usuari objectiu?",
                 "Les instruccions i etiquetes són concises i informatives?"
             ]
-        },
-        {
-            "Criteri": "",
-            "Preguntes": [ "","" ]
         }
     ]
 }
