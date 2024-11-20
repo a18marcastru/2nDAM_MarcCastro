@@ -94,6 +94,12 @@ app.post('/postFunctions', (req, res) => {
     });
 });
 
+app.post('/postLogs', (req, res) => {
+    const { title } = req.body;
+
+    console.log(title);
+});
+
 server.listen(port, () => {
     console.log(`localhost:${port}`);
 });

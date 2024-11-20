@@ -1,5 +1,6 @@
 package com.example.microservicesmanager.network
 
+import com.example.microservicesmanager.model.LogsResponse
 import com.example.microservicesmanager.model.MicroservicesResponse
 import com.example.microservicesmanager.model.StartMicroserviceRequest
 import retrofit2.Call
@@ -30,4 +31,7 @@ interface ProcessApi {
 
     @POST("postFunctions")
     fun postFunctions(@Body request: StartMicroserviceRequest): Call<Unit>
+
+    @POST("postLogs")
+    fun postLogs(@Body request: String): Call<LogsResponse>
 }

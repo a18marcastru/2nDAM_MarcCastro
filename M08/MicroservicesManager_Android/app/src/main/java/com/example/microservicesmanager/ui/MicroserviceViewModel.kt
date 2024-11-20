@@ -5,6 +5,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.microservicesmanager.data.getMicroservicesFromApi
 import com.example.microservicesmanager.data.postFunctionsFromApi
+import com.example.microservicesmanager.data.postLogsFromApi
 import com.example.microservicesmanager.model.Microservice
 import com.example.microservicesmanager.model.MicroservicesResponse
 import com.example.microservicesmanager.model.StartMicroserviceRequest
@@ -84,6 +85,12 @@ class MicroserviceViewModel() : ViewModel() {
         val request = StartMicroserviceRequest(title = microservice, activation)
         viewModelScope.launch {
             postFunctionsFromApi(request)
+        }
+    }
+
+    fun callLogs(microservice: String) {
+        viewModelScope.launch {
+            postLogsFromApi(microservice)
         }
     }
 }
