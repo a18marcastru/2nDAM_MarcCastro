@@ -6,6 +6,8 @@ import androidx.lifecycle.viewModelScope
 import com.example.microservicesmanager.data.getMicroservicesFromApi
 import com.example.microservicesmanager.data.postFunctionsFromApi
 import com.example.microservicesmanager.data.postLogsFromApi
+import com.example.microservicesmanager.model.LogsRequest
+import com.example.microservicesmanager.model.LogsResponse
 import com.example.microservicesmanager.model.Microservice
 import com.example.microservicesmanager.model.MicroservicesResponse
 import com.example.microservicesmanager.model.StartMicroserviceRequest
@@ -18,10 +20,13 @@ import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.update
 import org.json.JSONObject
+import kotlin.math.log
 
 class MicroserviceViewModel() : ViewModel() {
     private val _uiState = MutableStateFlow(MicroservicesResponse())
     val uiState: StateFlow<MicroservicesResponse> = _uiState.asStateFlow()
+    private val _uiStateLogs = MutableStateFlow(LogsResponse())
+    val uiStateLogs: StateFlow<LogsResponse> = _uiStateLogs.asStateFlow()
 
     lateinit var mSocket: Socket
 
@@ -29,7 +34,7 @@ class MicroserviceViewModel() : ViewModel() {
         viewModelScope.launch {
             getMicroservicesFromApi { microservicesResponse ->
                 if (microservicesResponse != null) {
-                    Log.d("state", microservicesResponse.microservices.toString())
+                    Log.d("State", microservicesResponse.microservices.toString())
                 }
                 microservicesResponse?.let {
                     _uiState.update { currentState ->
@@ -89,8 +94,19 @@ class MicroserviceViewModel() : ViewModel() {
     }
 
     fun callLogs(microservice: String) {
+        val request = LogsRequest(title = microservice)
         viewModelScope.launch {
-            postLogsFromApi(microservice)
+            postLogsFromApi(request) { logsResponse ->
+                Log.e("Hola", "$logsResponse")
+                if (logsResponse != null) {
+                    Log.d("State",logsResponse.logs.toString())
+                }
+                logsResponse?.let {
+                    _uiStateLogs.update { currentState ->
+                        currentState.copy(logs = logsResponse.logs)
+                    }
+                }
+            }
         }
     }
 }

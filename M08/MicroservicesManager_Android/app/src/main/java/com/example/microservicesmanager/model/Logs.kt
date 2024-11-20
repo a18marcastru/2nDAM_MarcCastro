@@ -1,9 +1,13 @@
 package com.example.microservicesmanager.model
 
-data class Logs(
+data class Log(
     val log: String
 )
 
 data class LogsResponse(
-    var logs: List<Logs> = emptyList()
+    var logs: List<Log> = emptyList()
+)
+
+data class LogsRequest(
+    val title: String
 )

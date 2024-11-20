@@ -1,5 +1,6 @@
 package com.example.microservicesmanager.network
 
+import com.example.microservicesmanager.model.LogsRequest
 import com.example.microservicesmanager.model.LogsResponse
 import com.example.microservicesmanager.model.MicroservicesResponse
 import com.example.microservicesmanager.model.StartMicroserviceRequest
@@ -33,5 +34,5 @@ interface ProcessApi {
     fun postFunctions(@Body request: StartMicroserviceRequest): Call<Unit>
 
     @POST("postLogs")
-    fun postLogs(@Body request: String): Call<LogsResponse>
+    fun postLogs(@Body request: LogsRequest): Call<LogsResponse>
 }

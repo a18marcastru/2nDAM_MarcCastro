@@ -10,5 +10,7 @@ import com.example.microservicesmanager.ui.screens.MicroserviceScreen
 fun MicroserviceApp(viewModel: MicroserviceViewModel = viewModel()) {
     val uiState by viewModel.uiState.collectAsState()
     val microservices = uiState.microservices
-    MicroserviceScreen(microservices, viewModel)
+    val uiStateLogs by viewModel.uiStateLogs.collectAsState()
+    val logs = uiStateLogs.logs
+    MicroserviceScreen(microservices, logs, viewModel)
 }

@@ -1,6 +1,7 @@
 package com.example.microservicesmanager.data
 
 import android.util.Log
+import com.example.microservicesmanager.model.LogsRequest
 import com.example.microservicesmanager.model.LogsResponse
 import com.example.microservicesmanager.model.MicroservicesResponse
 import com.example.microservicesmanager.model.StartMicroserviceRequest
@@ -47,12 +48,13 @@ fun postFunctionsFromApi(request: StartMicroserviceRequest) {
     })
 }
 
-fun postLogsFromApi(request: String) {
+fun postLogsFromApi(request: LogsRequest, onLogsResult: (LogsResponse?) -> Unit) {
     val call = RetrofitInstance.api.postLogs(request)
 
     call.enqueue(object : Callback<LogsResponse> {
         override fun onResponse(call: Call<LogsResponse>, response: Response<LogsResponse>) {
             if (response.isSuccessful) {
+                onLogsResult(response.body())
                 Log.e("Process", "Enviat el començament del proces")
             } else {
                 Log.e("Process", "Process error: ${response.code()}")
@@ -60,6 +62,7 @@ fun postLogsFromApi(request: String) {
         }
 
         override fun onFailure(call: Call<LogsResponse>, t: Throwable) {
+            onLogsResult(null)
             Log.e("Process", "Process failed: ${t.message}")
         }
     })

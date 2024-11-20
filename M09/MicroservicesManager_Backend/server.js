@@ -12,6 +12,7 @@ app.use(express.json())
 const server = createServer(app);
 const io = new Server(server);
 const scriptsFolder = path.join(__dirname, 'Scripts');
+const logsFolder = path.join(__dirname, 'Logs');
 
 io.on('connection', (socket) => {
     console.log('a user connected', socket.id);
@@ -98,6 +99,13 @@ app.post('/postLogs', (req, res) => {
     const { title } = req.body;
 
     console.log(title);
+
+    fs.readFile(`${logsFolder}/${title}.log`, 'utf-8', (err, data) => {
+        if(err) console.error("Error en leer el archivo log");
+        const logs = data.split('\n').filter(line => line.trim() !== '').map(line =>({ log: line }));
+        
+        res.json({ logs });
+    });
 });
 
 server.listen(port, () => {
