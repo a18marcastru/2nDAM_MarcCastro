@@ -62,7 +62,7 @@ function startMicroservice(title, newActivated) {
 
 function stopMicroservice(title, newActivated) {
     const logPath = path.join(logsFolder, `${title}.log`);
-    const message = `[${new Date().toISOString()}] ${title} Deactivated.\n`;
+    const message = `[${new Date().toISOString()}] ${title} Disabled.\n`;
 
     io.emit("Activation", { title, activated: newActivated });
     
@@ -77,15 +77,13 @@ function stopMicroservice(title, newActivated) {
 
 app.post('/postFunctions', (req, res) => {
     const { title, activated } = req.body;
-    console.log(title + " " + activated);
 
     const activation = spawn('node', [`./Scripts/${title}/index.js`]);
     
     const newActivated = activated === 0 ? 1 : 0;
 
     activation.stdout.on('data', (data) => {
-        if (activated === 1) startMicroservice(title, newActivated);
-        console.log(`${data}`);
+        if (newActivated === 1) startMicroservice(title, newActivated);
     });
 
     activation.stderr.on('data', (data) => {
@@ -105,15 +103,12 @@ app.post('/postFunctions', (req, res) => {
     });
 
     activation.on('close', (code) => {
-        if (activated === 0) stopMicroservice(title, newActivated);
-        console.log(`Process finished with code: ${code}`);
+        if (newActivated === 0) stopMicroservice(title, newActivated);
     });
 });
 
 app.post('/postLogs', (req, res) => {
     const { title } = req.body;
-
-    console.log(title);
 
     fs.readFile(`${logsFolder}/${title}.log`, 'utf-8', (err, data) => {
         if (err) console.error("Error reading the log file");
@@ -125,8 +120,6 @@ app.post('/postLogs', (req, res) => {
 
 app.post('/postLogsError', (req, res) => {
     const { title } = req.body;
-
-    console.log(title);
 
     fs.readFile(`${logsErrorFolder}/${title}.log`, 'utf-8', (err, data) => {
         if (err) console.error("Error reading the error log file");
