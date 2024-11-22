@@ -53,7 +53,7 @@ dependencies {
     implementation("androidx.compose.ui:ui:1.3.1")
     implementation("androidx.compose.material:material:1.3.1")
     implementation("androidx.compose.ui:ui-tooling-preview:1.3.1")
-    implementation("androidx.navigation:navigation-compose:2.5.3")
+    implementation("androidx.navigation:navigation-compose:2.7.4")
     implementation("io.coil-kt:coil-compose:2.4.0")
     implementation("com.google.code.gson:gson:2.10.1")
     implementation("com.squareup.okhttp3:logging-interceptor:4.9.3")
