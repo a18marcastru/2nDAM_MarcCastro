@@ -1,0 +1,94 @@
+{
+  "Preguntes": [
+    {
+      "Enunciat": "Quants jugadors té un equip de futbol en el camp?",
+      "Respostes": [
+        "9",
+        "10",
+        "11",
+        "12"
+      ]
+    },
+    {
+      "Enunciat": "Quants sets cal guanyar per a guanyar un partit de tennis masculí en un Grand Slam?",
+      "Respostes": [
+        "2",
+        "3",
+        "4",
+        "5"
+      ]
+    },
+    {
+      "Enunciat": "Quin país ha guanyat més Copes del Món de futbol?",
+      "Respostes": [
+        "Alemanya",
+        "Argentina",
+        "Brasil",
+        "Itàlia"
+      ]
+    },
+    {
+      "Enunciat": "Quin és l'únic esport que es juga a la Lluna?",
+      "Respostes": [
+        "Golf",
+        "Futbol",
+        "Tennis",
+        "Beisbol"
+      ]
+    },
+    {
+      "Enunciat": "Quantes medalles d'or va guanyar Michael Phelps en els Jocs Olímpics de Pequín 2008?",
+      "Respostes": [
+        "6",
+        "7",
+        "8",
+        "9"
+      ]
+    },
+    {
+      "Enunciat": "Quin és el país d'origen del criquet?",
+      "Respostes": [
+        "Austràlia",
+        "Anglaterra",
+        "Índia",
+        "Sud-àfrica"
+      ]
+    },
+    {
+      "Enunciat": "Quants minuts dura un partit de bàsquet a la NBA?",
+      "Respostes": [
+        "40",
+        "48",
+        "50",
+        "60"
+      ]
+    },
+    {
+      "Enunciat": "Quin és el sobrenom de l'equip de rugbi de Nova Zelanda?",
+      "Respostes": [
+        "Wallabies",
+        "All Blacks",
+        "Springboks",
+        "Pumas"
+      ]
+    },
+    {
+      "Enunciat": "Quina ciutat va acollir els primers Jocs Olímpics moderns?",
+      "Respostes": [
+        "Londres",
+        "Atenes",
+        "París",
+        "Roma"
+      ]
+    },
+    {
+      "Enunciat": "En quina cursa de ciclisme es puja al Tourmalet?",
+      "Respostes": [
+        "Giro d'Itàlia",
+        "Tour de França",
+        "Vuelta a Espanya",
+        "Clàssiques de Flandes"
+      ]
+    }
+  ]
+}

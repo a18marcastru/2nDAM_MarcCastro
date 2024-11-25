@@ -10,51 +10,67 @@ app.use(cors({ origin: '*' }));
 app.use(express.json());
 
 const logPath = path.join(__dirname, 'Logs', 'Connections.log');
-const logPath2 = path.join(__dirname, 'Logs', 'File_creation.log');
+const logPath2 = path.join(__dirname, 'Logs', 'Requests.log');
+const requestsPath = path.join(__dirname, 'Requests');
 
-function createConnection() {
-    return mysql.createConnection({
-        host: 'localhost',
-        user: 'root',
-        password: '',
-        database: 'preguntesesports',
-        port: 3306
-    })
-        .then(connection => {
-            console.log("Connexió creada");
+if(!fs.existsSync(requestsPath)) fs.mkdirSync('./Requests', { recursive: true });
 
-            const message = `[${new Date().toISOString()}] Established connection to BD.\n`;
-            fs.appendFile(logPath, message, (err) => {
-                if (err) {
-                    console.error(`Error al escribir en el log de conexión:`, err);
-                } else {
-                    console.log(`Registrado en log: ${message}`);
-                }
-            });
+const spainTime = new Intl.DateTimeFormat('es-ES', {
+    timeZone: 'Europe/Madrid',
+    dateStyle: 'short',
+    timeStyle: 'long',
+}).format(new Date());
 
-            return connection;
-        })
-        .catch(err => {
-            console.error('Error de connexió: ' + err);
+function writeLogConnection(message) {
+    fs.appendFileSync(logPath, message, (err) => {
+        if (err) {
+            console.error('Error writing to the connection log:', err);
+        } else {
+            console.log(`Logged: ${message}`);
+        }
+    });
+}
 
-            const message = `[${new Date().toISOString()}] Failed to establish connection to BD.\n`;
-            fs.appendFile(logPath, message, (err) => {
-                if (err) {
-                    console.error(`Error al escribir en el log de conexión:`, err);
-                } else {
-                    console.log(`Registrado en log: ${message}`);
-                }
-            });
-
-            throw err;
+async function createConnection() {
+    try {
+        const connection = await mysql.createConnection({
+            host: 'localhost',
+            user: 'root',
+            password: '',
+            database: 'preguntesesports',
+            port: 3306
         });
+
+        console.log("Connection established");
+
+        const message = `[${spainTime}] Established connection to BD.\n`;
+        writeLogConnection(message);
+
+        return connection;
+    } catch (err) {
+        console.error('Connection error:', err);
+
+        const message = `[${spainTime}] Error to establish connection to BD.\n`;
+        writeLogConnection(message);
+        
+        throw err;
+    }
+}
+
+function writeLogRequest(message) {
+    fs.appendFileSync(logPath2, message, (err) => {
+        if (err) {
+            console.error('Error writing to the request log:', err);
+        } else {
+            console.log(`Logged: ${message}`);
+        }
+    });
 }
 
 app.get('/getQuestionsAnswers', async (req, res) => {
-    let connection;
+    const connection = await createConnection();
+    
     try {
-        connection = await createConnection();
-
         const [results] = await connection.execute(`
             SELECT 
                 p.id AS pregunta_id,
@@ -67,8 +83,6 @@ app.get('/getQuestionsAnswers', async (req, res) => {
             ON 
                 p.id = r.id_pregunta
         `);
-
-        console.log(results)
 
         const response = { 
             "Preguntes": results.reduce((acc, row) => {
@@ -90,37 +104,28 @@ app.get('/getQuestionsAnswers', async (req, res) => {
             }, [])
         };
         
-        const message = `[${new Date().toISOString()}] Successful processing request.\n`;
-        fs.appendFile(logPath2, message, (err) => {
-            if (err) {
-                console.error(`Error al escribir en el log de conexión:`, err);
-            } else {
-                console.log(`Registrado en log: ${message}`);
-            }
-        });
+        const now = new Date();
+        const fileName = `preguntes_respostes_${now.getDate()}_${now.getMonth() + 1}_${now.getFullYear()}.json`;
+        const filePath = path.join(requestsPath, fileName);
+
+        fs.writeFileSync(filePath, JSON.stringify(response, null, 2));
+
+        const message = `[${spainTime}] Successful processing request.\n`;
+        writeLogRequest(message);
 
         res.json(response);
     } catch (err) {
-        const message = `[${new Date().toISOString()}] Error while processing request.\n`;
-        fs.appendFile(logPath2, message, (err) => {
-            if (err) {
-                console.error(`Error al escribir en el log de conexión:`, err);
-            } else {
-                console.log(`Registrado en log: ${message}`);
-            }
-        });
+        const message = `[${spainTime}] Error while processing request.\n`;
+        writeLogRequest(message);
 
         console.error(err);
         res.status(500).json({ error: 'Internal Server Error' });
     } finally {
-        if (connection) {
-            await connection.end();
-        }
+        connection.end();
     }
 });
 
-// Arrancar el servidor
-const PORT = 7000; // Port del servei
+const PORT = 7000;
 app.listen(PORT, () => {
-    console.log(`Servidor escoltant al port ${PORT}`);
+    console.log(`Server listening on port ${PORT}`);
 });
