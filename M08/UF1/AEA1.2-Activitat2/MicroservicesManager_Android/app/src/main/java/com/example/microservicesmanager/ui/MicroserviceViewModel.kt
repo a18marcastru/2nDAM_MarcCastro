@@ -11,6 +11,8 @@ import com.example.microservicesmanager.model.LogsRequest
 import com.example.microservicesmanager.model.LogsResponse
 import com.example.microservicesmanager.model.Microservice
 import com.example.microservicesmanager.model.MicroservicesResponse
+import com.example.microservicesmanager.model.Profile
+import com.example.microservicesmanager.model.Profiles
 import com.example.microservicesmanager.model.StartMicroserviceRequest
 import kotlinx.coroutines.launch
 import io.socket.client.IO
@@ -26,8 +28,12 @@ import kotlin.math.log
 class MicroserviceViewModel() : ViewModel() {
     private val _uiState = MutableStateFlow(MicroservicesResponse())
     val uiState: StateFlow<MicroservicesResponse> = _uiState.asStateFlow()
+
     private val _uiStateLogs = MutableStateFlow(LogsResponse())
     val uiStateLogs: StateFlow<LogsResponse> = _uiStateLogs.asStateFlow()
+
+    private val _uiStateProfiles = MutableStateFlow(Profiles())
+    val uiStateProfiles: StateFlow<Profiles> = _uiStateProfiles.asStateFlow()
 
     lateinit var mSocket: Socket
 
@@ -117,6 +123,22 @@ class MicroserviceViewModel() : ViewModel() {
                     }
                 }
             }
+        }
+    }
+
+    fun addProfile(label: String, host: String, port: String, checked: Boolean) {
+        val newId = _uiStateProfiles.value.profiles.size + 1
+        val newProfile = Profile(
+            id = newId,
+            label = label,
+            color = "",
+            host = host.toIntOrNull() ?: 0,
+            port = port.toIntOrNull() ?: 0,
+            predetermined = checked
+        )
+
+        _uiStateProfiles.update { currentProfiles ->
+            currentProfiles.copy(profiles = currentProfiles.profiles + newProfile)
         }
     }
 }

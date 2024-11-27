@@ -30,7 +30,7 @@ fun MicroserviceApp(navController: NavHostController = rememberNavController(), 
             MicroserviceScreen(microservices, logs, viewModel, navController)
         }
         composable(route = MicroserviceApp.Profiles.name) {
-            ProfilesScreen(navController)
+            ProfilesScreen(navController, viewModel)
         }
     }
 }
