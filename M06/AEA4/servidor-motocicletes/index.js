@@ -13,6 +13,10 @@ app.use(fileUpload()); // Habilitar la pujada d'arxius
 
 // Servir arxius estàtics des de la carpeta 'upload'
 app.use('/upload', express.static(path.join(__dirname, 'upload')));
+app.use('/api/motocicletes', motocicletesRoutes);
+app.use(cors());
+
+const motocicletesRoutes = require('./routes/motocicletes');
 
 // Connexió a la base de dades MongoDB
 mongoose.connect('mongodb://localhost:27017/motocicletes', {
