@@ -13,13 +13,13 @@ app.use(fileUpload()); // Habilitar la pujada d'arxius
 
 // Servir arxius estàtics des de la carpeta 'upload'
 app.use('/upload', express.static(path.join(__dirname, 'upload')));
+const motocicletesRoutes = require('./routes/motocicletes');
 app.use('/api/motocicletes', motocicletesRoutes);
 app.use(cors());
 
-const motocicletesRoutes = require('./routes/motocicletes');
 
 // Connexió a la base de dades MongoDB
-mongoose.connect('mongodb://localhost:27017/motocicletes', {
+mongoose.connect('mongodb+srv://a18marcastru:mongodb@cluster24-25.38noo.mongodb.net/motocicletes', {
   useNewUrlParser: true,
   useUnifiedTopology: true,
 })
