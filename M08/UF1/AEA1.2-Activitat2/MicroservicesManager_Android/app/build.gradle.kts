@@ -67,6 +67,7 @@ dependencies {
     implementation(libs.socket.io.client)
     implementation(libs.androidx.room.runtime)
     kapt(libs.androidx.room.compiler)
+    implementation ("androidx.room:room-ktx:2.5.2")
     implementation(libs.google.hilt.android)
     kapt(libs.hilt.compiler)
     implementation(libs.androidx.espresso.core)

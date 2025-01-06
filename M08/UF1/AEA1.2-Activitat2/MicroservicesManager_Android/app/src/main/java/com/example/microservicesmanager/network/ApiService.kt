@@ -1,9 +1,9 @@
 package com.example.microservicesmanager.network
 
-import com.example.microservicesmanager.model.LogsRequest
-import com.example.microservicesmanager.model.LogsResponse
-import com.example.microservicesmanager.model.MicroservicesResponse
-import com.example.microservicesmanager.model.StartMicroserviceRequest
+import com.example.microservicesmanager.data.model.LogsRequest
+import com.example.microservicesmanager.data.model.LogsResponse
+import com.example.microservicesmanager.data.model.MicroservicesResponse
+import com.example.microservicesmanager.data.model.StartMicroserviceRequest
 import retrofit2.Call
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory

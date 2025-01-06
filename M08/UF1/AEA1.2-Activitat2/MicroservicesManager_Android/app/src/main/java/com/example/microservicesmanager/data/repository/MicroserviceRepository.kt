@@ -1,10 +1,10 @@
-package com.example.microservicesmanager.data
+package com.example.microservicesmanager.data.repository
 
 import android.util.Log
-import com.example.microservicesmanager.model.LogsRequest
-import com.example.microservicesmanager.model.LogsResponse
-import com.example.microservicesmanager.model.MicroservicesResponse
-import com.example.microservicesmanager.model.StartMicroserviceRequest
+import com.example.microservicesmanager.data.model.LogsRequest
+import com.example.microservicesmanager.data.model.LogsResponse
+import com.example.microservicesmanager.data.model.MicroservicesResponse
+import com.example.microservicesmanager.data.model.StartMicroserviceRequest
 import com.example.microservicesmanager.network.RetrofitInstance
 import retrofit2.Call
 import retrofit2.Callback

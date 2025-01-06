@@ -1,19 +1,20 @@
-package com.example.microservicesmanager.ui
+package com.example.microservicesmanager.ui.viewmodel
 
 import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.microservicesmanager.data.getMicroservicesFromApi
-import com.example.microservicesmanager.data.postFunctionsFromApi
-import com.example.microservicesmanager.data.postLogsErrorFromApi
-import com.example.microservicesmanager.data.postLogsFromApi
-import com.example.microservicesmanager.model.LogsRequest
-import com.example.microservicesmanager.model.LogsResponse
-import com.example.microservicesmanager.model.Microservice
-import com.example.microservicesmanager.model.MicroservicesResponse
-import com.example.microservicesmanager.model.Profile
-import com.example.microservicesmanager.model.Profiles
-import com.example.microservicesmanager.model.StartMicroserviceRequest
+import com.example.microservicesmanager.data.repository.getMicroservicesFromApi
+import com.example.microservicesmanager.data.repository.postFunctionsFromApi
+import com.example.microservicesmanager.data.repository.postLogsErrorFromApi
+import com.example.microservicesmanager.data.repository.postLogsFromApi
+import com.example.microservicesmanager.data.model.LogsRequest
+import com.example.microservicesmanager.data.model.LogsResponse
+import com.example.microservicesmanager.data.model.Microservice
+import com.example.microservicesmanager.data.model.MicroservicesResponse
+import com.example.microservicesmanager.data.model.Profile
+import com.example.microservicesmanager.data.model.Profiles
+import com.example.microservicesmanager.data.model.StartMicroserviceRequest
+import com.example.microservicesmanager.data.repository.ProfileRepository
 import kotlinx.coroutines.launch
 import io.socket.client.IO
 import io.socket.client.Socket
@@ -23,9 +24,8 @@ import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.update
 import org.json.JSONObject
-import kotlin.math.log
 
-class MicroserviceViewModel() : ViewModel() {
+class MicroserviceViewModel(private val repository: ProfileRepository) : ViewModel() {
     private val _uiState = MutableStateFlow(MicroservicesResponse())
     val uiState: StateFlow<MicroservicesResponse> = _uiState.asStateFlow()
 
@@ -48,6 +48,18 @@ class MicroserviceViewModel() : ViewModel() {
                         currentState.copy(microservices = microservicesResponse.microservices)
                     }
                 }
+            }
+
+            try {
+                val profiles = repository.getProfilesAll()
+                if(profiles != null) {
+                    _uiStateProfiles.update { currentState ->
+                        currentState.copy(profiles = profiles)
+                    }
+                }
+                else _uiStateProfiles.value = Profiles(emptyList())
+            } catch (e: Exception) {
+                Log.e("Error", "Error en obtener datos: ${e.message}", e)
             }
         }
 
@@ -127,9 +139,7 @@ class MicroserviceViewModel() : ViewModel() {
     }
 
     fun addProfile(label: String, host: String, port: String, checked: Boolean) {
-        val newId = _uiStateProfiles.value.profiles.size + 1
         val newProfile = Profile(
-            id = newId,
             label = label,
             color = "",
             host = host.toIntOrNull() ?: 0,
@@ -137,8 +147,35 @@ class MicroserviceViewModel() : ViewModel() {
             predetermined = checked
         )
 
-        _uiStateProfiles.update { currentProfiles ->
-            currentProfiles.copy(profiles = currentProfiles.profiles + newProfile)
+        viewModelScope.launch {
+            repository.insertProfile(newProfile)
+
+            try {
+                val profiles = repository.getProfilesAll()
+                if(profiles != null) {
+                    _uiStateProfiles.update { currentState ->
+                        currentState.copy(profiles = profiles)
+                    }
+                }
+                else _uiStateProfiles.value = Profiles(emptyList())
+            } catch (e: Exception) {
+                Log.e("Error", "Error en obtener datos: ${e.message}", e)
+            }
+        }
+    }
+
+    fun deleteProfile(id: Int) {
+        Log.d("Profiles", id.toString())
+
+        viewModelScope.launch {
+            try {
+                repository.deleteProfile(id)
+                _uiStateProfiles.update { currentState ->
+                    currentState.copy(profiles = currentState.profiles.filter { it.id != id })
+                }
+            } catch (e: Exception) {
+                Log.e("Error", "Error al eliminar perfil: ${e.message}")
+            }
         }
     }
 }

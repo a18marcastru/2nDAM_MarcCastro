@@ -31,10 +31,10 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
-import com.example.microservicesmanager.model.Log
-import com.example.microservicesmanager.model.Microservice
+import com.example.microservicesmanager.data.model.Log
+import com.example.microservicesmanager.data.model.Microservice
 import com.example.microservicesmanager.ui.MicroserviceApp
-import com.example.microservicesmanager.ui.MicroserviceViewModel
+import com.example.microservicesmanager.ui.viewmodel.MicroserviceViewModel
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable

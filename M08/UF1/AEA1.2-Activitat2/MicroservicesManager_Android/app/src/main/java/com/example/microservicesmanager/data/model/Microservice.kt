@@ -1,4 +1,4 @@
-package com.example.microservicesmanager.model
+package com.example.microservicesmanager.data.model
 
 data class Microservice(
     val title: String,
