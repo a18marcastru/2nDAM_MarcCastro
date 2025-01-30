@@ -1,4 +1,4 @@
-import { connectarBD, tancarBD } from './db.js';
+import { connectarBD, inserirAlumnes, tancarBD } from './db.js';
 
 const URI = 'mongodb+srv://a18marcastru:mongodb@cluster24-25.38noo.mongodb.net/';
 const DB_NAME = 'alumnesDB';
@@ -13,11 +13,13 @@ const alumnesPerInserir = [
 ];
 
 await connectarBD(URI, DB_NAME);
+console.log('Connexió establerta correctament!');
 
-/*
+
 const numInserits = await inserirAlumnes(URI, DB_NAME, alumnesPerInserir[0]);
 console.log(`S'han inserit ${numInserits} alumnes!`);
 
+/*
 const alumnes = await obtenirAlumnes();
 console.log('Llistat d’alumnes a la BD:');
 console.log(alumnes);

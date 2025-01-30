@@ -1,18 +1,25 @@
 import mongo from "mongoose";
 
 export async function connectarBD(URI, DB_NAME) {
-    mongo.connect(URI + DB_NAME,  {
-        useNewUrlParser: true,
-        useUnifiedTopology: true,
-    })
-    .then(() => console.log('Connexió establerta correctament!'))
-    .catch((err) => console.error('Error al connectar a MongoDB', err));
+    try {
+        const client = await mongo.connect(URI + DB_NAME);
+        return client.db();
+    } catch (err) {
+        console.log("Error de conexió", err);
+    }
 }
 
 
 export async function inserirAlumnes(URI, DB_NAME, alumnesPerInserir) {
-
+    try {
+        const database = await connectarBD(URI, DB_NAME);
+        const result = await database.collection('alunmnes').insertMany(alumnesPerInserir)
+        return result;
+    } catch(err) {
+        console.log(err);
+    }
 }
+
 
 /*
 export async function obtenirAlumnes() {
