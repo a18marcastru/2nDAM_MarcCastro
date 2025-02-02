@@ -9,7 +9,7 @@ app.use(express.json())
 
 let quizJson
 let mySession = []
-let jsonOriginal
+let jsonOriginal;
 
 app.get('/', (req, res) => {
     
@@ -68,19 +68,24 @@ function getMySessionId(sessionId, jsonOriginal){
 }
 
 app.post('/finalista', (req, res) => {
-    const results = req.body
+    const { results } = req.body
 
     const sessionKey = Object.keys(mySession)[0];
 
-    const sessionData = mySession[sessionKey].data
+    const sessionData = mySession[sessionKey].data;
 
-    let count = 0;
+    console.log(sessionData);
+
+    let count = 0, i = 0;
 
     sessionData.forEach(item => {
-        if(sessionData[])
+        if(item.correctIndex === results[i]) {
+            count++;
+        }
+        i++;
     });
 
-    res.json({"total": sessionData.length})
+    res.json({"success": count,"total": results.length});
 
     // const resultsOriginal = mySession.data.correctIndex;
 
