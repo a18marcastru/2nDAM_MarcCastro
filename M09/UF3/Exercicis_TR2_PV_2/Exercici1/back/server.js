@@ -1,20 +1,29 @@
 "use strict";
-const express = require('express');
-const app = express();
-const { spawn } = require('child_process');
-const { createServer } = require('node:http');
-const { Server } = require('socket.io');
-const fs = require('fs');
-const path = require('path');
+const express = require("express");
+const http = require("http");
+const { Server } = require("socket.io");
+const cors = require("cors");
 
-const server = createServer(app);
-const io = new Server(server);
-const port = 3000;
+const app = express();
+const server = http.createServer(app);
+
+// Configurar CORS para permitir conexiones desde el frontend
+app.use(cors()); // Asegúrate de usar el puerto correcto de Vue
+
+const io = new Server(server, {
+  cors: {
+    origin: "*", // Permite conexiones desde Vue.js
+  },
+});
+
+const port = 3001;
 
 io.on('connection', (socket) => {
     console.log('A user connected', socket.id);
 
-    io.on("service1", ({ service, execute }) => {
+    socket.on("service1", (service) => {
+        console.log("Mensaje: ", service);
+
         
     });
 
@@ -23,6 +32,6 @@ io.on('connection', (socket) => {
     });
 });
 
-app.listen(port, () => {
+server.listen(port, () => {
     console.log(`Server 1 listening port ${port}`);
 });
