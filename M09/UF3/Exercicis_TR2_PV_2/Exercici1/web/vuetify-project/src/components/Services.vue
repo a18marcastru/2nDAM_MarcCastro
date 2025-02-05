@@ -11,9 +11,14 @@
 
 <script setup>
 import { funcionSocket } from "../services/socketManager.js";
+import { funcionSocket2 } from "../services/socketManager2.js";
 
 
 const executeMysql = () => {
     funcionSocket("MySQL");
+}
+
+const executeMongoDB = () => {
+    funcionSocket2("MongoDB");
 }
 </script>
