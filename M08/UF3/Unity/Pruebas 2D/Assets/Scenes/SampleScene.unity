@@ -660,11 +660,11 @@ Transform:
   m_GameObject: {fileID: 519420028}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.03, y: -0.03, z: -10}
+  m_LocalPosition: {x: 0.18, y: 0.13, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1495058278}
+  m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &581885042
 GameObject:
@@ -1214,7 +1214,6 @@ GameObject:
   - component: {fileID: 1495058277}
   - component: {fileID: 1495058280}
   - component: {fileID: 1495058281}
-  - component: {fileID: 1495058282}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Untagged
@@ -1286,11 +1285,10 @@ Transform:
   m_GameObject: {fileID: 1495058276}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 5.89, y: -1.63, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 519420032}
+  m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!195 &1495058280
@@ -1322,34 +1320,14 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1495058276}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f8b6d99b188e7042d97d6edebf2879cb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  speed: 2
-  waitTime: 1
-  waypoints:
-  - {fileID: 1082962903}
-  - {fileID: 1005556032}
-  - {fileID: 1301845230}
-  - {fileID: 581885043}
---- !u!114 &1495058282
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1495058276}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 24e8c66dd7d0f2587b00f0db14dd3cc9, type: 3}
+  m_Script: {fileID: 11500000, guid: f22bff79e7b3c5a248535243187e8e7c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 17482986}
-  minDistance: 0
-  visionRange: 3
-  speed: 2
+  player: {fileID: 0}
+  respawnWaypoint: {fileID: 0}
+  speed: 3
 --- !u!1 &1775084458
 GameObject:
   m_ObjectHideFlags: 0
@@ -1604,3 +1582,4 @@ SceneRoots:
   - {fileID: 343926093}
   - {fileID: 1495058278}
   - {fileID: 17482986}
+  - {fileID: 519420032}

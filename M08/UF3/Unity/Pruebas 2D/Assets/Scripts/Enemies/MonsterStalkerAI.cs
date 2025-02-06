@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class StalkerAI : MonoBehaviour
+public class MonsterStalkerAI : MonoBehaviour
 {
     [Header("Configuración")]
     [SerializeField] private Transform player;  // Referencia al jugador
