@@ -1,66 +1,40 @@
 using UnityEngine;
+using UnityEngine.AI;
 
 public class Enemy : MonoBehaviour
 {
-    [Header("Persecución")]
-    [SerializeField] private Transform player; // Referencia al jugador
-    [SerializeField] private float minDistance = 1.5f; // Distancia mínima para atacar
-    [SerializeField] private float visionRange = 5f; // Rango de visión
+    [Header("Configuración")]
+    [SerializeField] private Transform player;  // Referencia al jugador
+    [SerializeField] private float speed = 3f;  // Velocidad de persecución
 
-    private bool isChasing = false;
-    private UnityEngine.AI.NavMeshAgent agent; // Referencia al NavMeshAgent
+    private NavMeshAgent agent;
 
     void Start()
     {
-        agent = GetComponent<UnityEngine.AI.NavMeshAgent>();
+        agent = GetComponent<NavMeshAgent>();
         agent.updateRotation = false; // Desactiva la rotación automática
         agent.updateUpAxis = false;   // Evita cambios en el eje Z (útil en 2D)
+        agent.speed = speed; // Asigna la velocidad al NavMeshAgent
     }
 
     void Update()
     {
-        // Verificar si el jugador está dentro del rango de visión
-        if (Vector2.Distance(transform.position, player.position) <= visionRange)
-        {
-            isChasing = true;
-        }
-        else
-        {
-            isChasing = false;
-        }
-
-        if (isChasing)
-        {
-            ChasePlayer();
-        }
+        ChasePlayer();
     }
 
     void ChasePlayer()
     {
-        // Usamos el NavMeshAgent para perseguir al jugador
-        if (Vector2.Distance(transform.position, player.position) > minDistance)
+        if (player != null)
         {
-            agent.SetDestination(player.position); // Establecer la posición del jugador como destino
-        }
-        else
-        {
-            Attack();
+            agent.SetDestination(player.position);
         }
     }
 
-    public void Attack()
+    private void OnTriggerEnter2D(Collider2D other)
     {
-        Debug.Log("¡Atacar al jugador!");
-    }
-
-    public bool IsChasing()
-    {
-        return isChasing;
-    }
-
-    void OnDrawGizmos()
-    {
-        Gizmos.color = Color.yellow;
-        Gizmos.DrawWireSphere(transform.position, visionRange);
+        if (other.CompareTag("Player"))
+        {
+            Debug.Log("Atacar");
+        }
     }
 }

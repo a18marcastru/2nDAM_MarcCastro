@@ -34,7 +34,7 @@ public class PlayerController : MonoBehaviour
         vida -= cantidad;
         if (vida < 0) vida = 0;
         barraVida.ActualizarVida(vida);
-        Debug.Log("Vida restante: " + vida);
+        //Debug.Log("Vida restante: " + vida);
 
         if (vida <= 0)
         {

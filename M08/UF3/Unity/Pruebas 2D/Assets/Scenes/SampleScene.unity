@@ -132,7 +132,7 @@ GameObject:
   - component: {fileID: 17482987}
   - component: {fileID: 17482988}
   - component: {fileID: 17482989}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: Player
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -203,7 +203,7 @@ Transform:
   m_GameObject: {fileID: 17482984}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 3.63, y: 0.18, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -2118,7 +2118,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -755.8541, y: 516.38824}
+  m_AnchoredPosition: {x: -755.05, y: 514.61}
   m_SizeDelta: {x: 409.9011, y: 50.7758}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1409766123
@@ -2186,6 +2186,7 @@ GameObject:
   - component: {fileID: 1495058283}
   - component: {fileID: 1495058285}
   - component: {fileID: 1495058286}
+  - component: {fileID: 1495058287}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Enemy
@@ -2257,7 +2258,7 @@ Transform:
   m_GameObject: {fileID: 1495058276}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2.48, y: -0.02, z: 0}
+  m_LocalPosition: {x: -4.91, y: 0.37, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2315,12 +2316,12 @@ CircleCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0.013010263, y: 0}
-  m_Radius: 0.72117543
+  m_Offset: {x: 0.0041151047, y: 0}
+  m_Radius: 0.51658726
 --- !u!114 &1495058285
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2328,7 +2329,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1495058276}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f8b6d99b188e7042d97d6edebf2879cb, type: 3}
   m_Name: 
@@ -2348,12 +2349,27 @@ MonoBehaviour:
   m_GameObject: {fileID: 1495058276}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5ec1e69a1eb872ef380f908ba3c1a8be, type: 3}
+  m_Script: {fileID: 11500000, guid: 24e8c66dd7d0f2587b00f0db14dd3cc9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 17482986}
   minDistance: 1.5
-  visionRange: 2
+  visionRange: 7
+  visionAngle: 50
+--- !u!114 &1495058287
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1495058276}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5ec1e69a1eb872ef380f908ba3c1a8be, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 17482986}
+  speed: 3
 --- !u!1 &1752970693
 GameObject:
   m_ObjectHideFlags: 0
