@@ -54,5 +54,9 @@ public class PlayerController : MonoBehaviour
         {
             RecibirDano(1); // Resta 1 de vida al jugador
         }
+        else if (collision.CompareTag("Stalker"))
+        {
+            RecibirDano(vida);
+        }
     }
 }
