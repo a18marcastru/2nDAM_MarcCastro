@@ -8,6 +8,7 @@ public class MonsterChaseAI : MonoBehaviour
     [SerializeField] private float minDistance = 1.5f; // Distancia mínima para atacar
     [SerializeField] private float visionRange = 5f; // Rango de visión
     [SerializeField] private float visionAngle = 60f; // Ángulo del cono de visión
+    [SerializeField] private float detectionRadius = 2f; // Rango de detección circular
 
     private bool isChasing = false;
     private NavMeshAgent agent;
@@ -27,7 +28,7 @@ public class MonsterChaseAI : MonoBehaviour
         Vector2 playerDirection = player.position - transform.position;
 
         // Si el jugador está dentro del cono o dentro del collider, sigue persiguiendo
-        if (IsPlayerInVisionCone(playerDirection) || playerInsideCollider)
+        if (IsPlayerInVisionCone(playerDirection) || IsPlayerInDetectionRadius() || playerInsideCollider)
         {
             followingPlayer = true;
             isChasing = true;
@@ -56,6 +57,12 @@ public class MonsterChaseAI : MonoBehaviour
     void Attack()
     {
         Debug.Log("¡Atacar al jugador!");
+    }
+
+    // Verifica si el jugador está dentro del círculo de detección
+    bool IsPlayerInDetectionRadius()
+    {
+        return Vector2.Distance(transform.position, player.position) <= detectionRadius;
     }
 
     public bool IsChasing()
@@ -115,6 +122,10 @@ public class MonsterChaseAI : MonoBehaviour
     {
         Gizmos.color = Color.yellow;
         Gizmos.DrawWireSphere(transform.position, visionRange);
+
+        // Dibuja el círculo de detección
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(transform.position, detectionRadius);
 
         // Líneas del cono de visión
         Vector2 centerDir = GetDirectionFromAngle(currentAngle) * visionRange;
