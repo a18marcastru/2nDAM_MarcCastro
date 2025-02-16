@@ -18,11 +18,17 @@ class UserRepository(private val dao: UserDao) {
         }
     }
 
-    suspend fun getUser(email: String, password: String) :User? {
-        return withContext(Dispatchers.IO) {
-            dao.getUser(email, password)
+    suspend fun getUserAll() :User? {
+        withContext(Dispatchers.IO) {
+            dao.getUserAll()
         }
     }
+
+//    suspend fun getUser(email: String, password: String) :User? {
+//        return withContext(Dispatchers.IO) {
+//            dao.getUser(email, password)
+//        }
+//    }
 
 //    suspend fun deleteNote(id: Int) {
 //        withContext(Dispatchers.IO) {

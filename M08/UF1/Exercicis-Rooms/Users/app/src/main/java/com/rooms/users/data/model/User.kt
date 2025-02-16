@@ -7,8 +7,11 @@ import androidx.room.PrimaryKey
 data class User(
     @PrimaryKey (autoGenerate = true) val id: Int = 0,
     val name: String,
-    val surname: String,
-    val age: Int,
+    val age: Int = 0,
     val email: String,
     val password: String
+)
+
+data class UserList(
+    var userlist: List<User> = emptyList()
 )
