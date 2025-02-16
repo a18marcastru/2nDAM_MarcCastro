@@ -3,24 +3,24 @@
   "WorkspaceRootPath": "C:\\Users\\marcc\\Desktop\\GitHub\\2nDAM_MarcCastro\\M08\\UF3\\Unity\\Pruebas 2D\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{4FA27F0D-A987-AF52-5E71-2E9DFD170647}|Assembly-CSharp.csproj|c:\\users\\marcc\\desktop\\github\\2ndam_marccastro\\m08\\uf3\\unity\\pruebas 2d\\assets\\scripts\\enemies\\monsterstalkerai.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{4FA27F0D-A987-AF52-5E71-2E9DFD170647}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\enemies\\monsterstalkerai.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{4FA27F0D-A987-AF52-5E71-2E9DFD170647}|Assembly-CSharp.csproj|c:\\users\\marcc\\desktop\\github\\2ndam_marccastro\\m08\\uf3\\unity\\pruebas 2d\\assets\\scripts\\multiplayer\\monstercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4FA27F0D-A987-AF52-5E71-2E9DFD170647}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\multiplayer\\monstercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{4FA27F0D-A987-AF52-5E71-2E9DFD170647}|Assembly-CSharp.csproj|C:\\Users\\marcc\\Desktop\\GitHub\\2nDAM_MarcCastro\\M08\\UF3\\Unity\\Pruebas 2D\\assets\\scripts\\enemies\\enemy.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{4FA27F0D-A987-AF52-5E71-2E9DFD170647}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\enemies\\enemy.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{4FA27F0D-A987-AF52-5E71-2E9DFD170647}|Assembly-CSharp.csproj|C:\\Users\\marcc\\Desktop\\GitHub\\2nDAM_MarcCastro\\M08\\UF3\\Unity\\Pruebas 2D\\assets\\scripts\\multiplayer\\gamenetworkmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4FA27F0D-A987-AF52-5E71-2E9DFD170647}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\multiplayer\\gamenetworkmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{4FA27F0D-A987-AF52-5E71-2E9DFD170647}|Assembly-CSharp.csproj|c:\\users\\marcc\\desktop\\github\\2ndam_marccastro\\m08\\uf3\\unity\\pruebas 2d\\assets\\scripts\\enemies\\monsterchaseai.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{4FA27F0D-A987-AF52-5E71-2E9DFD170647}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\enemies\\monsterchaseai.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{4FA27F0D-A987-AF52-5E71-2E9DFD170647}|Assembly-CSharp.csproj|C:\\Users\\marcc\\Desktop\\GitHub\\2nDAM_MarcCastro\\M08\\UF3\\Unity\\Pruebas 2D\\assets\\scripts\\multiplayer\\monstersync.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4FA27F0D-A987-AF52-5E71-2E9DFD170647}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\multiplayer\\monstersync.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{4FA27F0D-A987-AF52-5E71-2E9DFD170647}|Assembly-CSharp.csproj|C:\\Users\\marcc\\Desktop\\GitHub\\2nDAM_MarcCastro\\M08\\UF3\\Unity\\Pruebas 2D\\assets\\scripts\\enemies\\monsterpatrolai.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{4FA27F0D-A987-AF52-5E71-2E9DFD170647}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\enemies\\monsterpatrolai.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{4FA27F0D-A987-AF52-5E71-2E9DFD170647}|Assembly-CSharp.csproj|C:\\Users\\marcc\\Desktop\\GitHub\\2nDAM_MarcCastro\\M08\\UF3\\Unity\\Pruebas 2D\\assets\\scripts\\multiplayer\\playercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4FA27F0D-A987-AF52-5E71-2E9DFD170647}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\multiplayer\\playercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{4FA27F0D-A987-AF52-5E71-2E9DFD170647}|Assembly-CSharp.csproj|C:\\Users\\marcc\\Desktop\\GitHub\\2nDAM_MarcCastro\\M08\\UF3\\Unity\\Pruebas 2D\\assets\\scripts\\playercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{4FA27F0D-A987-AF52-5E71-2E9DFD170647}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\playercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{4FA27F0D-A987-AF52-5E71-2E9DFD170647}|Assembly-CSharp.csproj|C:\\Users\\marcc\\Desktop\\GitHub\\2nDAM_MarcCastro\\M08\\UF3\\Unity\\Pruebas 2D\\assets\\scripts\\multiplayer\\playercamera.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4FA27F0D-A987-AF52-5E71-2E9DFD170647}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\multiplayer\\playercamera.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -30,70 +30,68 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 2,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "MonsterStalkerAI.cs",
-              "DocumentMoniker": "C:\\Users\\marcc\\Desktop\\GitHub\\2nDAM_MarcCastro\\M08\\UF3\\Unity\\Pruebas 2D\\Assets\\Scripts\\Enemies\\MonsterStalkerAI.cs",
-              "RelativeDocumentMoniker": "Assets\\Scripts\\Enemies\\MonsterStalkerAI.cs",
-              "ToolTip": "C:\\Users\\marcc\\Desktop\\GitHub\\2nDAM_MarcCastro\\M08\\UF3\\Unity\\Pruebas 2D\\Assets\\Scripts\\Enemies\\MonsterStalkerAI.cs",
-              "RelativeToolTip": "Assets\\Scripts\\Enemies\\MonsterStalkerAI.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "DocumentIndex": 2,
+              "Title": "MonsterSync.cs",
+              "DocumentMoniker": "C:\\Users\\marcc\\Desktop\\GitHub\\2nDAM_MarcCastro\\M08\\UF3\\Unity\\Pruebas 2D\\Assets\\Scripts\\Multiplayer\\MonsterSync.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\Multiplayer\\MonsterSync.cs",
+              "ToolTip": "C:\\Users\\marcc\\Desktop\\GitHub\\2nDAM_MarcCastro\\M08\\UF3\\Unity\\Pruebas 2D\\Assets\\Scripts\\Multiplayer\\MonsterSync.cs",
+              "RelativeToolTip": "Assets\\Scripts\\Multiplayer\\MonsterSync.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAEAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-02-10T22:14:22.264Z",
+              "WhenOpened": "2025-02-14T23:32:31.89Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "GameNetworkManager.cs",
+              "DocumentMoniker": "C:\\Users\\marcc\\Desktop\\GitHub\\2nDAM_MarcCastro\\M08\\UF3\\Unity\\Pruebas 2D\\Assets\\Scripts\\Multiplayer\\GameNetworkManager.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\Multiplayer\\GameNetworkManager.cs",
+              "ToolTip": "C:\\Users\\marcc\\Desktop\\GitHub\\2nDAM_MarcCastro\\M08\\UF3\\Unity\\Pruebas 2D\\Assets\\Scripts\\Multiplayer\\GameNetworkManager.cs",
+              "RelativeToolTip": "Assets\\Scripts\\Multiplayer\\GameNetworkManager.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABAAAABOAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-02-14T23:25:12.567Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "MonsterController.cs",
+              "DocumentMoniker": "C:\\Users\\marcc\\Desktop\\GitHub\\2nDAM_MarcCastro\\M08\\UF3\\Unity\\Pruebas 2D\\Assets\\Scripts\\Multiplayer\\MonsterController.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\Multiplayer\\MonsterController.cs",
+              "ToolTip": "C:\\Users\\marcc\\Desktop\\GitHub\\2nDAM_MarcCastro\\M08\\UF3\\Unity\\Pruebas 2D\\Assets\\Scripts\\Multiplayer\\MonsterController.cs",
+              "RelativeToolTip": "Assets\\Scripts\\Multiplayer\\MonsterController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAACsAAAApAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-02-14T14:10:51.174Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 4,
-              "Title": "PlayerController.cs",
-              "DocumentMoniker": "C:\\Users\\marcc\\Desktop\\GitHub\\2nDAM_MarcCastro\\M08\\UF3\\Unity\\Pruebas 2D\\Assets\\Scripts\\PlayerController.cs",
-              "RelativeDocumentMoniker": "Assets\\Scripts\\PlayerController.cs",
-              "ToolTip": "C:\\Users\\marcc\\Desktop\\GitHub\\2nDAM_MarcCastro\\M08\\UF3\\Unity\\Pruebas 2D\\Assets\\Scripts\\PlayerController.cs",
-              "RelativeToolTip": "Assets\\Scripts\\PlayerController.cs",
-              "ViewState": "AgIAAA4AAAAAAAAAAAAQwD0AAAABAAAAAAAAAA==",
+              "Title": "PlayerCamera.cs",
+              "DocumentMoniker": "C:\\Users\\marcc\\Desktop\\GitHub\\2nDAM_MarcCastro\\M08\\UF3\\Unity\\Pruebas 2D\\Assets\\Scripts\\Multiplayer\\PlayerCamera.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\Multiplayer\\PlayerCamera.cs",
+              "ToolTip": "C:\\Users\\marcc\\Desktop\\GitHub\\2nDAM_MarcCastro\\M08\\UF3\\Unity\\Pruebas 2D\\Assets\\Scripts\\Multiplayer\\PlayerCamera.cs",
+              "RelativeToolTip": "Assets\\Scripts\\Multiplayer\\PlayerCamera.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-02-10T19:57:17.257Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "Enemy.cs",
-              "DocumentMoniker": "C:\\Users\\marcc\\Desktop\\GitHub\\2nDAM_MarcCastro\\M08\\UF3\\Unity\\Pruebas 2D\\Assets\\Scripts\\Enemies\\Enemy.cs",
-              "RelativeDocumentMoniker": "Assets\\Scripts\\Enemies\\Enemy.cs",
-              "ToolTip": "C:\\Users\\marcc\\Desktop\\GitHub\\2nDAM_MarcCastro\\M08\\UF3\\Unity\\Pruebas 2D\\Assets\\Scripts\\Enemies\\Enemy.cs",
-              "RelativeToolTip": "Assets\\Scripts\\Enemies\\Enemy.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAfAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-02-10T15:42:45.153Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "MonsterChaseAI.cs",
-              "DocumentMoniker": "C:\\Users\\marcc\\Desktop\\GitHub\\2nDAM_MarcCastro\\M08\\UF3\\Unity\\Pruebas 2D\\Assets\\Scripts\\Enemies\\MonsterChaseAI.cs",
-              "RelativeDocumentMoniker": "Assets\\Scripts\\Enemies\\MonsterChaseAI.cs",
-              "ToolTip": "C:\\Users\\marcc\\Desktop\\GitHub\\2nDAM_MarcCastro\\M08\\UF3\\Unity\\Pruebas 2D\\Assets\\Scripts\\Enemies\\MonsterChaseAI.cs",
-              "RelativeToolTip": "Assets\\Scripts\\Enemies\\MonsterChaseAI.cs",
-              "ViewState": "AgIAADAAAAAAAAAAAAAQwDQAAAAFAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-02-10T16:18:26.012Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-02-14T13:58:48.764Z"
             },
             {
               "$type": "Document",
               "DocumentIndex": 3,
-              "Title": "MonsterPatrolAI.cs",
-              "DocumentMoniker": "C:\\Users\\marcc\\Desktop\\GitHub\\2nDAM_MarcCastro\\M08\\UF3\\Unity\\Pruebas 2D\\Assets\\Scripts\\Enemies\\MonsterPatrolAI.cs",
-              "RelativeDocumentMoniker": "Assets\\Scripts\\Enemies\\MonsterPatrolAI.cs",
-              "ToolTip": "C:\\Users\\marcc\\Desktop\\GitHub\\2nDAM_MarcCastro\\M08\\UF3\\Unity\\Pruebas 2D\\Assets\\Scripts\\Enemies\\MonsterPatrolAI.cs",
-              "RelativeToolTip": "Assets\\Scripts\\Enemies\\MonsterPatrolAI.cs",
-              "ViewState": "AgIAAAYAAAAAAAAAAAAcwC0AAAAwAAAAAAAAAA==",
+              "Title": "PlayerController.cs",
+              "DocumentMoniker": "C:\\Users\\marcc\\Desktop\\GitHub\\2nDAM_MarcCastro\\M08\\UF3\\Unity\\Pruebas 2D\\Assets\\Scripts\\Multiplayer\\PlayerController.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\Multiplayer\\PlayerController.cs",
+              "ToolTip": "C:\\Users\\marcc\\Desktop\\GitHub\\2nDAM_MarcCastro\\M08\\UF3\\Unity\\Pruebas 2D\\Assets\\Scripts\\Multiplayer\\PlayerController.cs",
+              "RelativeToolTip": "Assets\\Scripts\\Multiplayer\\PlayerController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAAUAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-02-10T16:25:18.638Z"
+              "WhenOpened": "2025-02-14T13:53:04.723Z"
             }
           ]
         }

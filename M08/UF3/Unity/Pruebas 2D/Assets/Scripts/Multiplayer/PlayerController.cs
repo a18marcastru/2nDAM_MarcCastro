@@ -1,11 +1,9 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
 using Mirror;
+using UnityEngine;
 
 public class PlayerController : NetworkBehaviour
 {
-    public float speed = 5f; // Velocidad del jugador
+    public float moveSpeed = 5f;
     private Rigidbody2D rb;
 
     void Start()
@@ -15,11 +13,12 @@ public class PlayerController : NetworkBehaviour
 
     void Update()
     {
-        if (!isLocalPlayer) return; // Solo controla el jugador local
+        if (!isLocalPlayer) return; // Asegura que solo el jugador local pueda moverse
 
         float moveX = Input.GetAxis("Horizontal");
         float moveY = Input.GetAxis("Vertical");
-        Vector2 move = new Vector2(moveX, moveY) * speed;
-        rb.linearVelocity = move;
+
+        Vector2 movement = new Vector2(moveX, moveY) * moveSpeed;
+        rb.linearVelocity = movement;
     }
 }
