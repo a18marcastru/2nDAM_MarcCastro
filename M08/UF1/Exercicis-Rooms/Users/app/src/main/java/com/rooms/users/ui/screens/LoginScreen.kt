@@ -18,13 +18,13 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
 import com.rooms.users.ui.UserApp
+import com.rooms.users.ui.viewmodel.UserViewModel
 
 @Composable
-fun LoginScreen(navHostController: NavHostController) {
+fun LoginScreen(viewModel: UserViewModel, navHostController: NavHostController) {
     var email by remember { mutableStateOf("") }
     var password by remember { mutableStateOf("") }
 
@@ -44,18 +44,20 @@ fun LoginScreen(navHostController: NavHostController) {
 
         TextField(
             value = email,
-            onValueChange = { email = it }
+            onValueChange = { email = it },
+            label = { Text("Email") }
         )
 
         Spacer(modifier = Modifier.height(8.dp))
 
         TextField(
             value = password,
-            onValueChange = { password = it }
+            onValueChange = { password = it },
+            label = { Text("Password") }
         )
 
         Row() {
-            Button(onClick = {}) {
+            Button(onClick = { viewModel.login(email, password) }) {
                 Text(text = "Login")
             }
             Button(onClick = { navHostController.navigate(UserApp.Register.name) }) {

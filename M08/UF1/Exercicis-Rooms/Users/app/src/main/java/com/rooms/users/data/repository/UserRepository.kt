@@ -10,29 +10,41 @@ class UserRepository(private val dao: UserDao) {
         withContext(Dispatchers.IO) {
             dao.insertUser(User(
                 name = user.name,
-                surname = user.surname,
                 age = user.age,
                 email = user.email,
-                password = user.password
+                password = user.password,
+                predetermined = user.predetermined
             ))
         }
     }
 
-    suspend fun getUserAll() :User? {
-        withContext(Dispatchers.IO) {
-            dao.getUserAll()
+    suspend fun getUser() : List<User>? {
+        return withContext(Dispatchers.IO) {
+            dao.getUser()
         }
     }
 
-//    suspend fun getUser(email: String, password: String) :User? {
-//        return withContext(Dispatchers.IO) {
-//            dao.getUser(email, password)
-//        }
-//    }
+    suspend fun getLogin(email: String, password: String, predetermined: Boolean) : Int {
+         return withContext(Dispatchers.IO) {
+            dao.getLogin(email, password, predetermined)
+        }
+    }
 
-//    suspend fun deleteNote(id: Int) {
-//        withContext(Dispatchers.IO) {
-//            dao.deleteNote(id)
-//        }
-//    }
+    suspend fun updatePredetermined(idUser: Int, predetermined: Boolean) {
+        withContext(Dispatchers.IO) {
+            dao.updatePredetermined(idUser, predetermined)
+        }
+    }
+
+    suspend fun deleteUser(id: Int) {
+        withContext(Dispatchers.IO) {
+            dao.deleteUser(id)
+        }
+    }
+
+    suspend fun deleteAll() {
+        withContext(Dispatchers.IO) {
+            dao.deleteAll()
+        }
+    }
 }

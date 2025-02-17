@@ -9,7 +9,8 @@ data class User(
     val name: String,
     val age: Int = 0,
     val email: String,
-    val password: String
+    val password: String,
+    val predetermined: Boolean
 )
 
 data class UserList(
