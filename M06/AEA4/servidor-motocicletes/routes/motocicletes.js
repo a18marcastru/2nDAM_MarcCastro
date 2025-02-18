@@ -1,7 +1,15 @@
 const express = require('express');
 const router = express.Router();
 const path = require('path');
+const fs = require('fs');
 const Motocicleta = require('../models/Motocicleta');
+
+const logPath = path.join(__dirname, '..', 'logs.log');
+const spainTime = new Intl.DateTimeFormat('es-ES', {
+  timeZone: 'Europe/Madrid',
+  dateStyle: 'short',
+  timeStyle: 'long',
+}).format(new Date());
 
 // Crear una nova motocicleta
 router.post('/', async (req, res) => {
@@ -26,6 +34,17 @@ router.post('/', async (req, res) => {
     });
 
     const motoGuardada = await novaMoto.save();
+
+    const message = `[${spainTime}] New motorcycle saved.\n`;
+
+    fs.appendFileSync(logPath, message, (err) => {
+      if (err) {
+        console.error('Error writing to the connection log:', err);
+      } else {
+        console.log(`Logged: ${message}`);
+      }
+    });
+    
     res.status(201).json(motoGuardada);
   } catch (error) {
     res.status(500).json({ missatge: 'Error al crear la motocicleta', error });
