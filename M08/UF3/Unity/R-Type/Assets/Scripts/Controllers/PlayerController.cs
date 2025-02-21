@@ -1,4 +1,5 @@
 using UnityEngine;
+using TMPro;
 
 public class PlayerController : MonoBehaviour
 {
@@ -8,6 +9,12 @@ public class PlayerController : MonoBehaviour
     public GameObject prefab;
     public Transform firePoint;
 
+    int num = 0;
+
+    public GameObject[] bullets;
+
+    public TextMeshProUGUI numBulletsText;
+
     void Awake() {
         Debug.Log("Awake");
     }
@@ -15,7 +22,15 @@ public class PlayerController : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        bullets = new GameObject[5];
+
+        for(int i = 0; i < bullets.Length; i++) {
+            bullets[i] = Instantiate(prefab, firePoint.position, Quaternion.identity);
+            bullets[i].SetActive(false);
+        }
         Debug.Log("Start");
+
+        numBulletsText.text = "" + bullets.Length;
     }
 
     // Update is called once per frame
@@ -33,11 +48,33 @@ public class PlayerController : MonoBehaviour
         transform.position = Vector3.Lerp(transform.position, targetPosition, speed * Time.deltaTime);
 
         if(Input.GetMouseButtonDown(0)) {
-            Instantiate(prefab, firePoint.position, Quaternion.identity);
+            if(num <= bullets.Length) {
+                Shoot(num);
+                numBulletsText.text = (bullets.Length - num).ToString();
+            }
+            else {
+                numBulletsText.text = "0";
+                Debug.Log("No hay balas");
+            }
+            num++;
         }
         /* -----
             Input.mousePosition();
             Camera.main.ScreenToWorldPoint();
         */
+    }
+
+    void Shoot(int num) {
+        bullets[num].transform.position = firePoint.position;
+        bullets[num].transform.rotation = firePoint.rotation;
+        bullets[num].SetActive(true);
+
+        Rigidbody2D rb = bullets[num].GetComponent<Rigidbody2D>();
+        if(rb != null) {
+            rb.velocity = firePoint.right * 10f;
+        }
+
+        num = (num + 1) % bullets.Length;
+        Destroy(bullets[num], 5f);
     }
 }
