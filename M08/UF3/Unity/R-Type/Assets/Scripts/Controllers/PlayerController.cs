@@ -5,11 +5,14 @@ public class PlayerController : MonoBehaviour
 {
     [Range(5f,10f)]
     public float speed = 1f;
+
     Vector3 targetPosition;
+
     public GameObject prefab;
+
     public Transform firePoint;
 
-    int num = 0;
+    private int num = 0;
 
     public GameObject[] bullets;
 
@@ -29,7 +32,7 @@ public class PlayerController : MonoBehaviour
             bullets[i].SetActive(false);
         }
         Debug.Log("Start");
-
+        
         numBulletsText.text = "" + bullets.Length;
     }
 
@@ -48,15 +51,15 @@ public class PlayerController : MonoBehaviour
         transform.position = Vector3.Lerp(transform.position, targetPosition, speed * Time.deltaTime);
 
         if(Input.GetMouseButtonDown(0)) {
-            if(num <= bullets.Length) {
+            Debug.Log(num);
+            if(num < bullets.Length) {
                 Shoot(num);
-                numBulletsText.text = (bullets.Length - num).ToString();
+                num++;
+                numBulletsText.text = "" + (bullets.Length - num);
             }
             else {
-                numBulletsText.text = "0";
                 Debug.Log("No hay balas");
             }
-            num++;
         }
         /* -----
             Input.mousePosition();
@@ -65,16 +68,13 @@ public class PlayerController : MonoBehaviour
     }
 
     void Shoot(int num) {
-        bullets[num].transform.position = firePoint.position;
-        bullets[num].transform.rotation = firePoint.rotation;
+        bullets[num].transform.SetPositionAndRotation(firePoint.position, firePoint.rotation);
         bullets[num].SetActive(true);
 
         Rigidbody2D rb = bullets[num].GetComponent<Rigidbody2D>();
         if(rb != null) {
             rb.velocity = firePoint.right * 10f;
         }
-
-        num = (num + 1) % bullets.Length;
         Destroy(bullets[num], 5f);
     }
 }
