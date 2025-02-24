@@ -14,7 +14,7 @@ public class PlayerController : MonoBehaviour
 
     private int num = 0;
 
-    public GameObject[] bullets;
+    private GameObject[] bullets;
 
     public TextMeshProUGUI numBulletsText;
 
@@ -61,10 +61,6 @@ public class PlayerController : MonoBehaviour
                 Debug.Log("No hay balas");
             }
         }
-        /* -----
-            Input.mousePosition();
-            Camera.main.ScreenToWorldPoint();
-        */
     }
 
     void Shoot(int num) {
@@ -73,7 +69,7 @@ public class PlayerController : MonoBehaviour
 
         Rigidbody2D rb = bullets[num].GetComponent<Rigidbody2D>();
         if(rb != null) {
-            rb.velocity = firePoint.right * 10f;
+            rb.linearVelocity = firePoint.right * 10f;
         }
         Destroy(bullets[num], 5f);
     }
