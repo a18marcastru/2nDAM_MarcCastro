@@ -40,7 +40,6 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
         if(Input.GetMouseButton(0)) {
-            Debug.Log("You have pressed left-click");
             targetPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             targetPosition.z = 0;
         }
@@ -51,7 +50,6 @@ public class PlayerController : MonoBehaviour
         transform.position = Vector3.Lerp(transform.position, targetPosition, speed * Time.deltaTime);
 
         if(Input.GetMouseButtonDown(0)) {
-            Debug.Log(num);
             if(num < bullets.Length) {
                 Shoot(num);
                 num++;
@@ -72,5 +70,16 @@ public class PlayerController : MonoBehaviour
             rb.linearVelocity = firePoint.right * 10f;
         }
         Destroy(bullets[num], 5f);
+    }
+
+    public void ReloadBullets()
+    {
+        num = 0;
+        for (int i = 0; i < bullets.Length; i++)
+        {
+            bullets[i] = Instantiate(prefab, firePoint.position, Quaternion.identity);
+            bullets[i].SetActive(false);
+        }
+        numBulletsText.text = bullets.Length.ToString();
     }
 }

@@ -3,15 +3,17 @@ using System.Collections;
 
 public class EnemyController : MonoBehaviour
 {
-    public float speed = 2f;         // Velocidad del movimiento
-    public float distance = 3f;      // Distancia que sube y baja
-    private float startY;            // Posición inicial en Y
+    public float speed = 2f;
+    public float distance = 3f;
+    private float startY;
+    public ParticleSystem hitEffect;
     int lives = 3;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         startY = transform.position.y;
+        hitEffect.Stop();
     }
 
     // Update is called once per frame
@@ -25,19 +27,25 @@ public class EnemyController : MonoBehaviour
     {
         if (other.CompareTag("Bullet"))  
         {
-            Debug.Log("Dado");
             lives--;
-            if(lives == 0) {
-                StartCoroutine(RespawnEnemy()); 
-                gameObject.SetActive(false);
+            if(lives == 0 && hitEffect != null) {
+                hitEffect.Play();
+                StartCoroutine(RespawnEnemy());
             }
         }
     }
 
     private IEnumerator RespawnEnemy() {
+        GetComponent<SpriteRenderer>().enabled = false;
+        GetComponent<Collider2D>().enabled = false;
+
         yield return new WaitForSeconds(3f);
+        
         lives = 3;
         gameObject.SetActive(true);
-        transform.position = new Vector3(0, 0, 1);
+        transform.position = new Vector3(transform.position.x, startY, transform.position.z);
+
+        GetComponent<SpriteRenderer>().enabled = true;
+        GetComponent<Collider2D>().enabled = true;
     }
 }
