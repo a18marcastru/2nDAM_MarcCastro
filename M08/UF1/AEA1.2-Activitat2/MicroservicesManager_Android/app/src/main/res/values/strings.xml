@@ -2,4 +2,5 @@
     <string name="app_name">Microservices Manager</string>
     <string name="menu">Menu</string>
     <string name="profiles">Profiles</string>
+    <string name="New_Profile">newProfile</string>
 </resources>

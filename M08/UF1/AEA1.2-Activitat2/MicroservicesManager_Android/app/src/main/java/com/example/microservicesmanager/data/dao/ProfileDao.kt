@@ -14,6 +14,12 @@ interface ProfileDao {
     @Insert
     suspend fun insertProfile(item: Profile)
 
+    @Query("UPDATE profile SET predetermined = :reset")
+    suspend fun clearAllPredetermined(reset: Int)
+
+    @Query("UPDATE Profile SET predetermined = :isPredetermined WHERE id = :id")
+    suspend fun updatePredetermined(id: Int, isPredetermined: Int)
+
     @Query("DELETE FROM Profile WHERE id = :id")
     suspend fun deleteProfile(id: Int)
 }

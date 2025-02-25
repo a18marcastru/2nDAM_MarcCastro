@@ -25,6 +25,18 @@ class ProfileRepository(private val dao: ProfileDao) {
         }
     }
 
+    suspend fun clearAllPredetermined(reset: Int) {
+        withContext(Dispatchers.IO) {
+            dao.clearAllPredetermined(reset)
+        }
+    }
+
+    suspend fun updatePredetermined(profileId: Int, predetermined: Int) {
+        withContext(Dispatchers.IO) {
+            dao.updatePredetermined(profileId, predetermined)
+        }
+    }
+
     suspend fun deleteProfile(id: Int) {
         return withContext(Dispatchers.IO) {
             dao.deleteProfile(id)

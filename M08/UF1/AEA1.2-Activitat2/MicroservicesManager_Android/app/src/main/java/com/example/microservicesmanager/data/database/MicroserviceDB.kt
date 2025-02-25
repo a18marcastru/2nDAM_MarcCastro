@@ -5,7 +5,7 @@ import androidx.room.RoomDatabase
 import com.example.microservicesmanager.data.dao.ProfileDao
 import com.example.microservicesmanager.data.model.Profile
 
-@Database(entities = [Profile::class], version = 1)
+@Database(entities = [Profile::class], version = 1, exportSchema = false)
 abstract class MicroserviceDB : RoomDatabase() {
 
 

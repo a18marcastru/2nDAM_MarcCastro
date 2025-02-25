@@ -8,7 +8,7 @@ data class Profile(
     @PrimaryKey (autoGenerate = true) val id: Int = 0,
     val label: String,
     val color: String,
-    val host: Int,
+    val host: String,
     val port: Int,
     val predetermined: Boolean
 )

@@ -1,6 +1,7 @@
 package com.example.microservicesmanager.ui.viewmodel
 
 import android.util.Log
+import androidx.compose.ui.graphics.Color
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.microservicesmanager.data.repository.getMicroservicesFromApi
@@ -35,7 +36,7 @@ class MicroserviceViewModel(private val repository: ProfileRepository) : ViewMod
     private val _uiStateProfiles = MutableStateFlow(Profiles())
     val uiStateProfiles: StateFlow<Profiles> = _uiStateProfiles.asStateFlow()
 
-    lateinit var mSocket: Socket
+    private lateinit var mSocket: Socket
 
     init {
         viewModelScope.launch {
@@ -58,6 +59,7 @@ class MicroserviceViewModel(private val repository: ProfileRepository) : ViewMod
                     }
                 }
                 else _uiStateProfiles.value = Profiles(emptyList())
+                Log.d("Profiles", _uiStateProfiles.value.profiles.toString())
             } catch (e: Exception) {
                 Log.e("Error", "Error en obtener datos: ${e.message}", e)
             }
@@ -138,11 +140,11 @@ class MicroserviceViewModel(private val repository: ProfileRepository) : ViewMod
         }
     }
 
-    fun addProfile(label: String, host: String, port: String, checked: Boolean) {
+    fun addProfile(label: String, host: String, port: String, color: String, checked: Boolean) {
         val newProfile = Profile(
             label = label,
-            color = "",
-            host = host.toIntOrNull() ?: 0,
+            color = color,
+            host = host,
             port = port.toIntOrNull() ?: 0,
             predetermined = checked
         )
@@ -158,11 +160,36 @@ class MicroserviceViewModel(private val repository: ProfileRepository) : ViewMod
                     }
                 }
                 else _uiStateProfiles.value = Profiles(emptyList())
+                Log.d("Profiles", _uiStateProfiles.value.profiles.toString())
             } catch (e: Exception) {
                 Log.e("Error", "Error en obtener datos: ${e.message}", e)
             }
         }
     }
+
+    fun togglePredetermined(selectedProfile: Profile) {
+        val isPredetermined = selectedProfile.predetermined
+        val newPredeterminedValue = if (isPredetermined) 0 else 1
+
+        Log.d("togglePredetermined", "Selected profile ID: ${selectedProfile.id}, Predetermined: $isPredetermined")
+
+        viewModelScope.launch {
+            repository.clearAllPredetermined(0)
+
+            repository.updatePredetermined(selectedProfile.id, newPredeterminedValue)
+
+            val updatedProfiles = repository.getProfilesAll()
+
+            updatedProfiles?.let {
+                _uiStateProfiles.value = _uiStateProfiles.value.copy(profiles = it)
+            }
+
+            Log.d("Profile-Update", _uiStateProfiles.value.profiles.toString())
+        }
+    }
+
+
+
 
     fun deleteProfile(id: Int) {
         Log.d("Profiles", id.toString())

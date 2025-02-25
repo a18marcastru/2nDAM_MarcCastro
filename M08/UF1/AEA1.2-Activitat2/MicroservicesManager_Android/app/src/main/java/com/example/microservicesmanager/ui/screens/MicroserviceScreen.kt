@@ -56,7 +56,7 @@ fun MicroserviceScreen(
                         verticalAlignment = Alignment.CenterVertically,
                         horizontalArrangement = Arrangement.SpaceBetween
                     ) {
-                        IconButton(onClick = { navController.navigate(MicroserviceApp.Profiles.name) }) {
+                        IconButton(onClick = { navController.navigate(MicroserviceApp.ListProfiles.name) }) {
                             Icon(
                                 imageVector = Icons.Default.AccountCircle,
                                 contentDescription = "Go to Profile"
