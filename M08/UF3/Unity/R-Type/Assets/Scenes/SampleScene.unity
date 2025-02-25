@@ -270,7 +270,7 @@ GameObject:
   - component: {fileID: 540574095}
   m_Layer: 0
   m_Name: Enemy
-  m_TagString: Enemy
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -376,7 +376,7 @@ CircleCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
@@ -662,7 +662,7 @@ GameObject:
   - component: {fileID: 1435255586}
   - component: {fileID: 1435255588}
   - component: {fileID: 1435255589}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Player
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -753,7 +753,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 5
-  prefab: {fileID: 768754177158894443, guid: cb025d5f75c8cb459923fc46521051a3, type: 3}
+  prefab: {fileID: 768754177158894443, guid: eb0e94ccfdaf42b5e897e0d5ae132793, type: 3}
   firePoint: {fileID: 1437769824}
   numBulletsText: {fileID: 1187164760}
 --- !u!58 &1435255589
