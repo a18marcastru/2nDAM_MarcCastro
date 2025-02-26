@@ -44,7 +44,7 @@ fun ListProfilesScreen(profiles: List<Profile>, navController: NavController, vi
     Scaffold(
         topBar = {
             TopAppBar(
-                title = { },
+                title = { Text(text = "List of Profiles") },
                 navigationIcon = {
                     IconButton(onClick = { navController.popBackStack() }) {
                         Icon(imageVector = Icons.Default.ArrowBack, contentDescription = "Tornar")
@@ -88,31 +88,29 @@ fun ListProfilesScreen(profiles: List<Profile>, navController: NavController, vi
                 }
             }
 
-            // Iterar sobre los perfiles
             items(profiles) { profile ->
                 Row(
                     modifier = Modifier
                         .fillMaxWidth()
                         .padding(16.dp),
-                    horizontalArrangement = Arrangement.SpaceBetween // Espacio entre columnas
+                    horizontalArrangement = Arrangement.SpaceBetween
                 ) {
                     Text(text = profile.label, style = MaterialTheme.typography.bodyMedium)
 
-                    // Mostrar un indicador de color con color predeterminado si está vacío
                     val parsedColor = try {
                         if (profile.color.isNotBlank()) {
                             Color(android.graphics.Color.parseColor(profile.color))
                         } else {
-                            Color.Gray // Color predeterminado si el valor está vacío
+                            Color.Gray
                         }
                     } catch (e: IllegalArgumentException) {
-                        Color.Gray // Color predeterminado si el formato es inválido
+                        Color.Gray
                     }
 
                     Box(
                         modifier = Modifier
-                            .size(24.dp) // Tamaño del indicador de color
-                            .background(color = parsedColor, shape = CircleShape) // Forma circular
+                            .size(24.dp)
+                            .background(color = parsedColor, shape = CircleShape)
                     )
 
                     Text(text = profile.host, style = MaterialTheme.typography.bodyMedium)
@@ -121,7 +119,8 @@ fun ListProfilesScreen(profiles: List<Profile>, navController: NavController, vi
                         checked = profile.predetermined,
                         onCheckedChange = { viewModel.togglePredetermined(profile) } // Llama al ViewModel
                     )
-                    IconButton(onClick = {  }) {
+
+                    IconButton(onClick = { navController.navigate("EditProfile/${profile.id}") }) {
                         Icon(
                             imageVector = Icons.Default.Edit,
                             contentDescription = "Edit profile"

@@ -5,10 +5,13 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.navigation.NavHostController
+import androidx.navigation.NavType
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import androidx.navigation.navArgument
 import com.example.microservicesmanager.R
+import com.example.microservicesmanager.ui.screens.EditProfileScreen
 import com.example.microservicesmanager.ui.screens.ListProfilesScreen
 import com.example.microservicesmanager.ui.screens.MicroserviceScreen
 import com.example.microservicesmanager.ui.screens.ProfileScreen
@@ -17,7 +20,8 @@ import com.example.microservicesmanager.ui.viewmodel.MicroserviceViewModel
 enum class MicroserviceApp(@StringRes val title: Int) {
     Menu(title = R.string.menu),
     ListProfiles(title = R.string.profiles),
-    NewProfile(title = R.string.New_Profile)
+    NewProfile(title = R.string.New_Profile),
+    EditProfile(title = R.string.EditProfile)
 }
 
 @Composable
@@ -35,6 +39,13 @@ fun MicroserviceApp(viewModel: MicroserviceViewModel, navController: NavHostCont
         }
         composable(route = MicroserviceApp.NewProfile.name) {
             ProfileScreen(navController, viewModel)
+        }
+        composable(
+            route = "EditProfile/{id}",
+            arguments = listOf(navArgument("id") { type = NavType.IntType })
+        ) { backStackEntry ->
+            val profileId = backStackEntry.arguments?.getString("id") ?: 0
+            EditProfileScreen(navController, profileId.toString(), viewModel, uiStateProfiles)
         }
     }
 }

@@ -134,7 +134,6 @@ fun ProfileScreen(navController: NavHostController, viewModel: MicroserviceViewM
                     val colorHex = "#%06X".format(0xFFFFFF and selectedColor.toArgb()) // Convertir color a HEX
                     viewModel.addProfile(label, host, port, colorHex, checked)
 
-                    // Resetear valores
                     label = ""
                     host = ""
                     port = ""

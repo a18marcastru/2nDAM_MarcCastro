@@ -3,4 +3,5 @@
     <string name="menu">Menu</string>
     <string name="profiles">Profiles</string>
     <string name="New_Profile">newProfile</string>
+    <string name="EditProfile">editprofile</string>
 </resources>

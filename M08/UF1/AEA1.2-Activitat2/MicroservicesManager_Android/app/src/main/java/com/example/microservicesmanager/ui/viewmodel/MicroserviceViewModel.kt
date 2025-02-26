@@ -168,10 +168,9 @@ class MicroserviceViewModel(private val repository: ProfileRepository) : ViewMod
     }
 
     fun togglePredetermined(selectedProfile: Profile) {
-        val isPredetermined = selectedProfile.predetermined
-        val newPredeterminedValue = if (isPredetermined) 0 else 1
+        val newPredeterminedValue = if (selectedProfile.predetermined) 0 else 1
 
-        Log.d("togglePredetermined", "Selected profile ID: ${selectedProfile.id}, Predetermined: $isPredetermined")
+        Log.d("togglePredetermined", "Selected profile ID: ${selectedProfile.id}, Predetermined: ${selectedProfile.predetermined}")
 
         viewModelScope.launch {
             repository.clearAllPredetermined(0)
