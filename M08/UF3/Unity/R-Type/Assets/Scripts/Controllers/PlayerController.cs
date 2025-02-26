@@ -1,22 +1,19 @@
 using UnityEngine;
+using System.Collections.Generic;
 using TMPro;
 
 public class PlayerController : MonoBehaviour
 {
     [Range(5f,10f)]
     public float speed = 1f;
-
     Vector3 targetPosition;
-
-    public GameObject prefab;
-
+    public GameObject prefabBullet;
+    private int poolSize = 5;
     public Transform firePoint;
-
     private int num = 0;
-
-    private GameObject[] bullets;
-
     public TextMeshProUGUI numBulletsText;
+
+    private Queue<GameObject> pool = new Queue<GameObject>();
 
     void Awake() {
         Debug.Log("Awake");
@@ -25,20 +22,22 @@ public class PlayerController : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        bullets = new GameObject[5];
-
-        for(int i = 0; i < bullets.Length; i++) {
-            bullets[i] = Instantiate(prefab, firePoint.position, Quaternion.identity);
+        for(int i = 0; i < poolSize; i++) {
+            GameObject bullet = Instantiate(bulletPrefab);
             bullets[i].SetActive(false);
+            pool.Enqueue(bullet)
         }
         Debug.Log("Start");
         
-        numBulletsText.text = "" + bullets.Length;
+        numBulletsText.text = "" + poolSize;
     }
 
     // Update is called once per frame
     void Update()
     {
+        targetPosition = transform.position + new Vector3(Input.GetAxis("Horizontal"),Input.GetAxis("Vertical"), 0);
+
+        /*
         if(Input.GetMouseButton(0)) {
             targetPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             targetPosition.z = 0;
@@ -46,10 +45,11 @@ public class PlayerController : MonoBehaviour
         else {
             targetPosition = transform.position + new Vector3(Input.GetAxis("Horizontal"),Input.GetAxis("Vertical"), 0);
         }
+        */
         
         transform.position = Vector3.Lerp(transform.position, targetPosition, speed * Time.deltaTime);
 
-        if(Input.GetMouseButtonDown(0)) {
+        if(Input.GetMouseButtonDown(1)) {
             if(num < bullets.Length) {
                 Shoot(num);
                 num++;
@@ -72,12 +72,33 @@ public class PlayerController : MonoBehaviour
         Destroy(bullets[num], 5f);
     }
 
+    public GameObject GetBullet()
+    {
+        if (pool.Count > 0)
+        {
+            GameObject bullet = pool.Dequeue();
+            bullet.SetActive(true);
+            return bullet;
+        }
+        else
+        {
+            GameObject bullet = Instantiate(bulletPrefab);
+            return bullet;
+        }
+    }
+
+    public void ReturnBullet(GameObject bullet)
+    {
+        bullet.SetActive(false);
+        pool.Enqueue(bullet);
+    }
+
     public void ReloadBullets()
     {
         num = 0;
         for (int i = 0; i < bullets.Length; i++)
         {
-            bullets[i] = Instantiate(prefab, firePoint.position, Quaternion.identity);
+            bullets[i] = Instantiate(prefabBullet, firePoint.position, Quaternion.identity);
             bullets[i].SetActive(false);
         }
         numBulletsText.text = bullets.Length.ToString();
