@@ -61,9 +61,10 @@ fun ListProfilesScreen(profiles: List<Profile>, navController: NavController, vi
                 .fillMaxSize()
                 .padding(padding),
             horizontalAlignment = Alignment.CenterHorizontally,
-            verticalArrangement = Arrangement.Center
+            verticalArrangement = Arrangement.Top
         ) {
             item {
+                Spacer(modifier = Modifier.height(23.dp))
                 Text("Profiles", style = MaterialTheme.typography.titleLarge)
                 Spacer(modifier = Modifier.height(23.dp))
 
@@ -117,7 +118,7 @@ fun ListProfilesScreen(profiles: List<Profile>, navController: NavController, vi
                     Text(text = profile.port.toString(), style = MaterialTheme.typography.bodyMedium)
                     Checkbox(
                         checked = profile.predetermined,
-                        onCheckedChange = { viewModel.togglePredetermined(profile) } // Llama al ViewModel
+                        onCheckedChange = { viewModel.togglePredetermined(profile) }
                     )
 
                     IconButton(onClick = { navController.navigate("EditProfile/${profile.id}") }) {

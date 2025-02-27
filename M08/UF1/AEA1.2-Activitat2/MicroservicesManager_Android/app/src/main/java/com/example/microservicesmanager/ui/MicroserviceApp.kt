@@ -1,6 +1,7 @@
 package com.example.microservicesmanager.ui
 
 import androidx.annotation.StringRes
+import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
@@ -20,8 +21,7 @@ import com.example.microservicesmanager.ui.viewmodel.MicroserviceViewModel
 enum class MicroserviceApp(@StringRes val title: Int) {
     Menu(title = R.string.menu),
     ListProfiles(title = R.string.profiles),
-    NewProfile(title = R.string.New_Profile),
-    EditProfile(title = R.string.EditProfile)
+    NewProfile(title = R.string.New_Profile)
 }
 
 @Composable
@@ -40,12 +40,15 @@ fun MicroserviceApp(viewModel: MicroserviceViewModel, navController: NavHostCont
         composable(route = MicroserviceApp.NewProfile.name) {
             ProfileScreen(navController, viewModel)
         }
-        composable(
-            route = "EditProfile/{id}",
-            arguments = listOf(navArgument("id") { type = NavType.IntType })
-        ) { backStackEntry ->
-            val profileId = backStackEntry.arguments?.getString("id") ?: 0
-            EditProfileScreen(navController, profileId.toString(), viewModel, uiStateProfiles)
+        composable(route = "EditProfile/{id}",
+            arguments = listOf(navArgument("id") { type = NavType.StringType })) { backStackEntry ->
+            val profileId = backStackEntry.arguments?.getString("id")?.toIntOrNull()
+            val selectedProfile = profileId?.let { id -> uiStateProfiles.profiles.find { it.id == id } }
+            if (selectedProfile != null) {
+                EditProfileScreen(navController, viewModel, selectedProfile)
+            } else {
+                Text("Perfil no trobat")
+            }
         }
     }
 }

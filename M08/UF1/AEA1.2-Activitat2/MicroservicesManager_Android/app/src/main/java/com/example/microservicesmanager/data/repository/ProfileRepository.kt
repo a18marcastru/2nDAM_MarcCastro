@@ -37,6 +37,12 @@ class ProfileRepository(private val dao: ProfileDao) {
         }
     }
 
+    suspend fun updateProfile(idProfile: Int, label: String, colorHex: String, host: String, port: Int) {
+        withContext(Dispatchers.IO) {
+            dao.updateProfile(idProfile, label, colorHex, host, port)
+        }
+    }
+
     suspend fun deleteProfile(id: Int) {
         return withContext(Dispatchers.IO) {
             dao.deleteProfile(id)

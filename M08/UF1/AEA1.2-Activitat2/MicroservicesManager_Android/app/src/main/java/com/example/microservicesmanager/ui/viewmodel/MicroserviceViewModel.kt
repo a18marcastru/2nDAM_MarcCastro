@@ -1,7 +1,6 @@
 package com.example.microservicesmanager.ui.viewmodel
 
 import android.util.Log
-import androidx.compose.ui.graphics.Color
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.microservicesmanager.data.repository.getMicroservicesFromApi
@@ -150,9 +149,8 @@ class MicroserviceViewModel(private val repository: ProfileRepository) : ViewMod
         )
 
         viewModelScope.launch {
-            repository.insertProfile(newProfile)
-
             try {
+                repository.insertProfile(newProfile)
                 val profiles = repository.getProfilesAll()
                 if(profiles != null) {
                     _uiStateProfiles.update { currentState ->
@@ -179,16 +177,34 @@ class MicroserviceViewModel(private val repository: ProfileRepository) : ViewMod
 
             val updatedProfiles = repository.getProfilesAll()
 
-            updatedProfiles?.let {
-                _uiStateProfiles.value = _uiStateProfiles.value.copy(profiles = it)
+            if(updatedProfiles != null) {
+                _uiStateProfiles.update { currentState ->
+                    currentState.copy(profiles = updatedProfiles);
+                }
             }
 
             Log.d("Profile-Update", _uiStateProfiles.value.profiles.toString())
         }
     }
 
+     fun updateProfile(id: Int, label: String, colorHex: String, host: String, port: Int) {
+         viewModelScope.launch {
+             try {
+                 repository.updateProfile(id, label, colorHex, host, port)
 
-
+                 val profiles = repository.getProfilesAll()
+                 if(profiles != null) {
+                     _uiStateProfiles.update { currentState ->
+                         currentState.copy(profiles = profiles)
+                     }
+                 }
+                 else _uiStateProfiles.value = Profiles(emptyList())
+                 Log.d("Profiles-UPDATE", _uiStateProfiles.value.profiles.toString())
+             } catch (e: Exception) {
+                 Log.e("Error", e.toString())
+             }
+        }
+    }
 
     fun deleteProfile(id: Int) {
         Log.d("Profiles", id.toString())
