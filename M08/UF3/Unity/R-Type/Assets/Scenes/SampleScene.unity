@@ -669,7 +669,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 5
-  prefab: {fileID: 768754177158894443, guid: eb0e94ccfdaf42b5e897e0d5ae132793, type: 3}
+  prefabBullet: {fileID: 768754177158894443, guid: eb0e94ccfdaf42b5e897e0d5ae132793, type: 3}
   firePoint: {fileID: 1437769824}
   numBulletsText: {fileID: 1187164760}
 --- !u!58 &1435255589

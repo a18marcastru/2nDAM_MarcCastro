@@ -4,9 +4,9 @@ using TMPro;
 public class Bullets : MonoBehaviour
 {
     public ParticleSystem hitEffect;  // El prefab del sistema de partículas
-    private BulletPool bulletPool;
+    private PlayerController bulletPool;
 
-    public void SetPool(BulletPool pool)
+    public void SetPool(PlayerController pool)
     {
         bulletPool = pool;
     }
@@ -20,9 +20,7 @@ public class Bullets : MonoBehaviour
                 ParticleSystem effect = Instantiate(hitEffect, transform.position, Quaternion.identity);
                 effect.Play();
             }
-            
-            // Desactiva la bala
-            gameObject.SetActive(false);
+            bulletPool.ReturnBullet(gameObject);
         }
     }
 }

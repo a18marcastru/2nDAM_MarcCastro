@@ -10,7 +10,6 @@ public class PlayerController : MonoBehaviour
     public GameObject prefabBullet;
     private int poolSize = 5;
     public Transform firePoint;
-    private int num = 0;
     public TextMeshProUGUI numBulletsText;
 
     private Queue<GameObject> pool = new Queue<GameObject>();
@@ -23,9 +22,9 @@ public class PlayerController : MonoBehaviour
     void Start()
     {
         for(int i = 0; i < poolSize; i++) {
-            GameObject bullet = Instantiate(bulletPrefab);
-            bullets[i].SetActive(false);
-            pool.Enqueue(bullet)
+            GameObject bullet = Instantiate(prefabBullet);
+            bullet.SetActive(false);
+            pool.Enqueue(bullet);
         }
         Debug.Log("Start");
         
@@ -50,26 +49,21 @@ public class PlayerController : MonoBehaviour
         transform.position = Vector3.Lerp(transform.position, targetPosition, speed * Time.deltaTime);
 
         if(Input.GetMouseButtonDown(1)) {
-            if(num < bullets.Length) {
-                Shoot(num);
-                num++;
-                numBulletsText.text = "" + (bullets.Length - num);
-            }
-            else {
-                Debug.Log("No hay balas");
-            }
+            Shoot();
         }
     }
 
-    void Shoot(int num) {
-        bullets[num].transform.SetPositionAndRotation(firePoint.position, firePoint.rotation);
-        bullets[num].SetActive(true);
+    void Shoot() {
+        GameObject bullet = GetBullet();
+        if(bullet != null) {
+            bullet.transform.SetPositionAndRotation(firePoint.position, firePoint.rotation);
 
-        Rigidbody2D rb = bullets[num].GetComponent<Rigidbody2D>();
-        if(rb != null) {
-            rb.linearVelocity = firePoint.right * 10f;
+            Rigidbody2D rb = bullet.GetComponent<Rigidbody2D>();
+            if(rb != null) {
+                rb.linearVelocity = firePoint.right * 10f;
+            }
         }
-        Destroy(bullets[num], 5f);
+        else Debug.Log("No hay balas");
     }
 
     public GameObject GetBullet()
@@ -82,8 +76,7 @@ public class PlayerController : MonoBehaviour
         }
         else
         {
-            GameObject bullet = Instantiate(bulletPrefab);
-            return bullet;
+            return null;
         }
     }
 
@@ -95,12 +88,11 @@ public class PlayerController : MonoBehaviour
 
     public void ReloadBullets()
     {
-        num = 0;
-        for (int i = 0; i < bullets.Length; i++)
+        GameObject[] activeBullets = GameObject.FindGameObjectsWithTag("Bullet");
+
+        foreach (GameObject bullet in activeBullets)
         {
-            bullets[i] = Instantiate(prefabBullet, firePoint.position, Quaternion.identity);
-            bullets[i].SetActive(false);
+            ReturnBullet(bullet);
         }
-        numBulletsText.text = bullets.Length.ToString();
     }
 }

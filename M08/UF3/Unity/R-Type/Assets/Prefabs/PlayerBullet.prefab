@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 1411486456581524259}
   - component: {fileID: 4150558263987906731}
   - component: {fileID: -8165203360629675784}
+  - component: {fileID: -1749512498447587660}
   m_Layer: 6
   m_Name: PlayerBullet
   m_TagString: Bullet
@@ -170,7 +171,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 768754177158894443}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 59cc56e75ee87571ca3983c13403e516, type: 3}
   m_Name: 
@@ -178,3 +179,16 @@ MonoBehaviour:
   speed: 10
   lifetime: 2
   particleSystemOnHit: {fileID: 8411884266372701502, guid: a19293a022e200f479cfe63181138cda, type: 3}
+--- !u!114 &-1749512498447587660
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 768754177158894443}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 80ef1a109d7799560b34c7d95ec6041c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hitEffect: {fileID: 8699674883965921394, guid: a19293a022e200f479cfe63181138cda, type: 3}
