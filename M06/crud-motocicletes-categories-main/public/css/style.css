@@ -1,0 +1,44 @@
+body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+    background-color: #f5f5f5;
+    padding: 20px;
+  }
+  
+  h1 {
+    color: #007BFF;
+  }
+  
+  a, button {
+    display: inline-block;
+    margin: 10px;
+    padding: 10px 20px;
+    text-decoration: none;
+    color: white;
+    background-color: #007BFF;
+    border-radius: 5px;
+    border: none;
+  }
+  
+  a:hover, button:hover {
+    background-color: #0056b3;
+  }
+  
+  .categoria {
+    background: white;
+    padding: 15px;
+    margin: 10px auto;
+    border-radius: 5px;
+    width: 50%;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  ul {
+    text-align: left;
+    display: inline-block;
+  }
+  
+  button {
+    cursor: pointer;
+  }
+  

@@ -1,16 +1,10 @@
 using UnityEngine;
 using TMPro;
+using System.Collections.Generic;
 
 public class Bullets : MonoBehaviour
 {
     public ParticleSystem hitEffect;  // El prefab del sistema de partículas
-    private PlayerController bulletPool;
-
-    public void SetPool(PlayerController pool)
-    {
-        bulletPool = pool;
-    }
-
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.CompareTag("Enemy"))  
@@ -20,7 +14,6 @@ public class Bullets : MonoBehaviour
                 ParticleSystem effect = Instantiate(hitEffect, transform.position, Quaternion.identity);
                 effect.Play();
             }
-            bulletPool.ReturnBullet(gameObject);
         }
     }
 }

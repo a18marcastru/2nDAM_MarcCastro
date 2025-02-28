@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Listado de Categorías</title>
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+  <h1>📂 Categorías de Motocicletas</h1>
+  <a href="/categories/nou">➕ Crear Nueva Categoría</a>
+  <a href="/">🏠 Volver a Inicio</a>
+
+  <% if (categories.length > 0) { %>
+    <% categories.forEach(categoria => { %>
+      <div class="categoria">
+        <h2><%= categoria.nombre %></h2>
+        <a href="/categories/<%= categoria.id %>/editar">✏️ Editar</a>
+        <form action="/categories/<%= categoria.id %>/eliminar" method="POST" style="display:inline;">
+          <button type="submit">🗑️ Eliminar</button>
+        </form>
+
+        <% if (categoria.Motocicleta.length > 0) { %>
+          <h3>🏍️ Motocicletas en esta categoría:</h3>
+          <ul>
+            <% categoria.Motocicleta.forEach(moto => { %>
+              <li><%= moto.marca %> - <%= moto.model %> (Potencia: <%= moto.potencia %> CV)</li>
+            <% }); %>
+          </ul>
+        <% } else { %>
+          <p>❌ No hay motocicletas en esta categoría.</p>
+        <% } %>
+      </div>
+    <% }); %>
+  <% } else { %>
+    <p>⚠️ No hay categorías registradas.</p>
+  <% } %>
+</body>
+</html>

@@ -12,7 +12,9 @@ public class PlayerController : MonoBehaviour
     public Transform firePoint;
     public TextMeshProUGUI numBulletsText;
 
-    private Queue<GameObject> pool = new Queue<GameObject>();
+    private Queue<GameObject> pool = new Queue<GameObject>(); // Charger
+
+    private GameObject[] newBullets;
 
     void Awake() {
         Debug.Log("Awake");
@@ -21,8 +23,11 @@ public class PlayerController : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        newBullets = new GameObject[poolSize];
+
         for(int i = 0; i < poolSize; i++) {
             GameObject bullet = Instantiate(prefabBullet);
+            newBullets[i] = bullet;
             bullet.SetActive(false);
             pool.Enqueue(bullet);
         }
@@ -88,9 +93,7 @@ public class PlayerController : MonoBehaviour
 
     public void ReloadBullets()
     {
-        GameObject[] activeBullets = GameObject.FindGameObjectsWithTag("Bullet");
-
-        foreach (GameObject bullet in activeBullets)
+        foreach (GameObject bullet in newBullets)
         {
             ReturnBullet(bullet);
         }

@@ -1,0 +1,17 @@
+<%- include('../partials/header', { title: 'Bienvenido a Mi Aplicación' }) %>
+    <h1>Comentaris de la motocicleta <%= motocicleta.marca %> <%= motocicleta.model %></h1>
+    
+    <% let counter = 1; %>
+    <!-- Iterar sobre todos los comentarios y mostrarlos -->
+    <% comentaris.forEach(comentari => { %>
+        <div>
+            <p><strong>Comentari #:</strong> <%= counter %></p>
+            <p><strong>Comentari:</strong> <%= comentari.comentari %></p>
+            <p><strong>Usuari:</strong> <%= comentari.usuari %></p>
+            <p><strong>Fecha:</strong> <%= comentari.calendar %></p>
+        </div>
+        <% counter++; %>
+    <% }) %>
+    
+    <a href="/motocicletes">Tornar enrere</a>
+<%- include('../partials/footer') %>

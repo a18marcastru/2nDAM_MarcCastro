@@ -1,0 +1,28 @@
+{
+    "name": "crud-motocicletes",
+    "version": "1.0.0",
+    "description": "Aplicació CRUD per gestionar motocicletes amb Node.js, Express, Sequelize i EJS.",
+    "main": "app.js",
+    "type": "module",
+    "scripts": {
+      "start": "node app.js",
+      "dev": "nodemon app.js"
+    },
+    "dependencies": {
+      "dotenv": "^16.0.3",
+      "ejs": "^3.1.9",
+      "express": "^4.18.2",
+      "mysql2": "^3.2.0",
+      "sequelize": "^6.28.0"
+    },
+    "devDependencies": {
+      "nodemon": "^2.0.20"
+    },
+    "engines": {
+      "node": ">=14.0.0"
+    },
+    "keywords": ["Node.js", "Express", "Sequelize", "EJS", "CRUD", "MySQL"],
+    "author": "Professor de desenvolupament web",
+    "license": "MIT"
+  }
+  

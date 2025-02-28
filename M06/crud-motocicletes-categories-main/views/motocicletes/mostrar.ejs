@@ -1,0 +1,23 @@
+<%- include('../partials/header', { title: 'Bienvenido a Mi Aplicación' }) %>
+
+
+  <h1>Detalls de la Motocicleta</h1>
+  <p>
+    <strong>ID:</strong> <%= motocicleta.id %>
+  </p>
+  <p>
+    <strong>Marca:</strong> <%= motocicleta.marca %>
+  </p>
+  <p>
+    <strong>Model:</strong> <%= motocicleta.model %>
+  </p>
+  <p>
+    <strong>Descripció:</strong> <%= motocicleta.descripcio %>
+  </p>
+  <p>
+    <strong>Potència:</strong> <%= motocicleta.potencia %>
+  </p>
+  <a href="/motocicletes">Tornar enrere</a>
+
+  <%- include('../partials/footer') %>
+

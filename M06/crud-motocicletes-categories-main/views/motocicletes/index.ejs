@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Llista de Motocicletes</title>
+</head>
+<body>
+  <h1>Llista de Motocicletes</h1>
+  <a href="/motocicletes/nou">Afegir nova motocicleta</a>
+  <table border="1">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Marca</th>
+        <th>Model</th>
+        <th>Potència</th>
+        <th>Accions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% motocicletes.forEach(function(moto) { %>
+        <tr>
+          <td><%= moto.id %></td>
+          <td><%= moto.marca %></td>
+          <td><%= moto.model %></td>
+          <td><%= moto.potencia %></td>
+          <td>
+            <a href="/comentaris/<%= moto.id %>">Comentaris</a> |
+            <a href="/motocicletes/<%= moto.id %>">Veure</a> |
+            <a href="/motocicletes/<%= moto.id %>/editar">Editar</a> |
+            <form action="/motocicletes/<%= moto.id %>/eliminar" method="POST" style="display:inline">
+              <button type="submit">Eliminar</button>
+            </form>
+          </td>
+        </tr>
+      <% }); %>
+    </tbody>
+  </table>
+</body>
+</html>

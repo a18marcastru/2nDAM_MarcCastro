@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Nueva Motocicleta</title>
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+  <h1>Crear Nueva Motocicleta</h1>
+  <form action="/motocicletes" method="POST">
+    <label for="marca">Marca:</label>
+    <input type="text" name="marca" id="marca" required>
+    <br>
+    <label for="model">Modelo:</label>
+    <input type="text" name="model" id="model" required>
+    <br>
+    <label for="descripcio">Descripción:</label>
+    <textarea name="descripcio" id="descripcio"></textarea>
+    <br>
+    <label for="potencia">Potencia:</label>
+    <input type="number" name="potencia" id="potencia" required>
+    <br>
+    <label for="categoriaId">Categoría:</label>
+    <select name="categoriaId" id="categoriaId" required>
+      <option value="">-- Seleccione una Categoría --</option>
+      <% categories.forEach(category => { %>
+        <option value="<%= category.id %>"><%= category.nombre %></option>
+      <% }); %>
+    </select>
+    <br>
+    <button type="submit">Crear</button>
+  </form>
+  <a href="/motocicletes">Volver</a>
+</body>
+</html>
