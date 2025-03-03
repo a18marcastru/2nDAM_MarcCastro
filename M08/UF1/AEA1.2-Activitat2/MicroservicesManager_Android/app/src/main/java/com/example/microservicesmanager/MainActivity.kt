@@ -31,7 +31,7 @@ class MainActivity : ComponentActivity() {
             MicroserviceDB::class.java,
             "my_database"
         ).build()
-        val dao = db.profileDao() // [NOU]
+        val dao = db.profileDao()
 
         val repository = ProfileRepository(dao)
 

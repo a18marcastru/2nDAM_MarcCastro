@@ -1,6 +1,5 @@
 package com.example.microservicesmanager.data.dao
 
-import androidx.compose.ui.graphics.Color
 import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.Query

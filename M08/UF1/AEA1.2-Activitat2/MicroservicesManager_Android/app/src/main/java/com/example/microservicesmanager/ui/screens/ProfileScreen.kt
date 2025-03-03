@@ -1,5 +1,6 @@
 package com.example.microservicesmanager.ui.screens
 
+import android.widget.Toast
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
@@ -36,6 +37,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.toArgb
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
 import com.example.microservicesmanager.ui.viewmodel.MicroserviceViewModel
@@ -49,6 +51,7 @@ fun ProfileScreen(navController: NavHostController, viewModel: MicroserviceViewM
     var checked by remember { mutableStateOf(false) }
     var selectedColor by remember { mutableStateOf(Color.Black) }
     var expanded by remember { mutableStateOf(false) }
+    val context = LocalContext.current
 
     val colors = listOf(Color.Red, Color.Blue, Color.Green, Color.Yellow, Color.Black)
 
@@ -102,8 +105,7 @@ fun ProfileScreen(navController: NavHostController, viewModel: MicroserviceViewM
                 )
                 Spacer(modifier = Modifier.height(16.dp))
 
-                // Selector de color
-                Text(text = "Seleccionar color:")
+                Text(text = "Select color:")
                 Box(
                     modifier = Modifier
                         .size(40.dp)
@@ -131,16 +133,17 @@ fun ProfileScreen(navController: NavHostController, viewModel: MicroserviceViewM
                 Spacer(modifier = Modifier.height(16.dp))
 
                 Button(onClick = {
-                    val colorHex = "#%06X".format(0xFFFFFF and selectedColor.toArgb()) // Convertir color a HEX
-                    viewModel.addProfile(label, host, port, colorHex, checked)
-
+                    val colorHex = "#%06X".format(0xFFFFFF and selectedColor.toArgb())
+                    viewModel.addProfile(label, host, port, colorHex, checked) { onSuccess ->
+                        Toast.makeText(context, onSuccess, Toast.LENGTH_SHORT).show()
+                    }
                     label = ""
                     host = ""
                     port = ""
                     checked = false
                     selectedColor = Color.Black
                 }) {
-                    Text(text = "Añadir")
+                    Text(text = "Add")
                 }
             }
         }

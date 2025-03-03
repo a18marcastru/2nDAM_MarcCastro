@@ -32,7 +32,7 @@ fun MicroserviceApp(viewModel: MicroserviceViewModel, navController: NavHostCont
 
     NavHost(navController, startDestination = MicroserviceApp.Menu.name) {
         composable(route = MicroserviceApp.Menu.name) {
-            MicroserviceScreen(uiState.microservices, uiStateLogs.logs, viewModel, navController)
+            MicroserviceScreen(uiState.microservices, uiStateLogs.logs, viewModel, navController, uiStateProfiles)
         }
         composable(route = MicroserviceApp.ListProfiles.name) {
             ListProfilesScreen(uiStateProfiles.profiles, navController, viewModel)
@@ -47,7 +47,7 @@ fun MicroserviceApp(viewModel: MicroserviceViewModel, navController: NavHostCont
             if (selectedProfile != null) {
                 EditProfileScreen(navController, viewModel, selectedProfile)
             } else {
-                Text("Perfil no trobat")
+                Text("Profile not found")
             }
         }
     }

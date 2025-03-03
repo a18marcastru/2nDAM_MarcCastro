@@ -58,9 +58,8 @@ class MicroserviceViewModel(private val repository: ProfileRepository) : ViewMod
                     }
                 }
                 else _uiStateProfiles.value = Profiles(emptyList())
-                Log.d("Profiles", _uiStateProfiles.value.profiles.toString())
             } catch (e: Exception) {
-                Log.e("Error", "Error en obtener datos: ${e.message}", e)
+                Log.e("Error", "Error getting data: ${e.message}", e)
             }
         }
 
@@ -139,7 +138,7 @@ class MicroserviceViewModel(private val repository: ProfileRepository) : ViewMod
         }
     }
 
-    fun addProfile(label: String, host: String, port: String, color: String, checked: Boolean) {
+    fun addProfile(label: String, host: String, port: String, color: String, checked: Boolean, onSuccess: (String) -> Unit) {
         val newProfile = Profile(
             label = label,
             color = color,
@@ -153,22 +152,20 @@ class MicroserviceViewModel(private val repository: ProfileRepository) : ViewMod
                 repository.insertProfile(newProfile)
                 val profiles = repository.getProfilesAll()
                 if(profiles != null) {
+                    onSuccess("New profile success")
                     _uiStateProfiles.update { currentState ->
                         currentState.copy(profiles = profiles)
                     }
                 }
                 else _uiStateProfiles.value = Profiles(emptyList())
-                Log.d("Profiles", _uiStateProfiles.value.profiles.toString())
             } catch (e: Exception) {
-                Log.e("Error", "Error en obtener datos: ${e.message}", e)
+                Log.e("Error", "Error getting data: ${e.message}", e)
             }
         }
     }
 
     fun togglePredetermined(selectedProfile: Profile) {
         val newPredeterminedValue = if (selectedProfile.predetermined) 0 else 1
-
-        Log.d("togglePredetermined", "Selected profile ID: ${selectedProfile.id}, Predetermined: ${selectedProfile.predetermined}")
 
         viewModelScope.launch {
             repository.clearAllPredetermined(0)
@@ -216,7 +213,7 @@ class MicroserviceViewModel(private val repository: ProfileRepository) : ViewMod
                     currentState.copy(profiles = currentState.profiles.filter { it.id != id })
                 }
             } catch (e: Exception) {
-                Log.e("Error", "Error al eliminar perfil: ${e.message}")
+                Log.e("Error", "Error to delete profile: ${e.message}")
             }
         }
     }
