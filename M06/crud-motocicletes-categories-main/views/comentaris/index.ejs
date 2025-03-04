@@ -1,5 +1,13 @@
-<%- include('../partials/header', { title: 'Bienvenido a Mi Aplicación' }) %>
-    <h1>Comentaris de la motocicleta <%= motocicleta.marca %> <%= motocicleta.model %></h1>
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Llista de Comentaris</title>
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+    <h1>Comentaris de la motocicleta <%= motocicleta.model %></h1>
+    <a href="/comentaris/nou">Afegir nou Comentari</a>
     
     <% let counter = 1; %>
     <!-- Iterar sobre todos los comentarios y mostrarlos -->
@@ -14,4 +22,5 @@
     <% }) %>
     
     <a href="/motocicletes">Tornar enrere</a>
-<%- include('../partials/footer') %>
+</body>
+</html>

@@ -3,12 +3,14 @@ import { Motocicleta, Categoria, Comentari } from '../models/index.js';
 import motocicleta from '../models/motocicleta.js';
 
 const router = express.Router();
+const calendar = () => {
+  return new Date();
+}
 
-// Llista totes les motocicletes
-router.get('/', async (req, res) => {
+router.get('/nou', async (req, res) => {
   try {
-    const comens = await Comentari.findAll();
-    res.render('comentaris/index', { comentaris: comens });
+    const motocicletes = await Motocicleta.findAll();
+    res.render('comentaris/nou', { motocicletes });
   } catch (error) {
     res.status(500).send(error.message);
   }
@@ -21,13 +23,21 @@ router.get('/:id', async (req, res) => {
       where: { motoId: req.params.id}
     });
     const moto = await Motocicleta.findOne({
-      Where: { id: comens.motoId}
+      where: { id: req.params.id}
     });
-    if (comens.length > 0) {
-      res.render('comentaris/index', { comentaris: comens, motocicleta: moto });
-    } else {
-      res.status(404).send('Comentaris no trobada');
-    }
+    res.render('comentaris/index', { comentaris: comens, motocicleta: moto });
+  } catch (error) {
+    res.status(500).send(error.message);
+  }
+});
+
+// Crear una nova motocicleta
+router.post('/', async (req, res) => {
+  try {
+    const { motoId, comentari, usuari } = req.body;
+    const calendarDate = calendar();
+    await Comentari.create({ motoId, comentari, usuari, calendar: calendarDate });
+    res.redirect('/comentaris/index');
   } catch (error) {
     res.status(500).send(error.message);
   }
@@ -44,16 +54,7 @@ router.get('/nou', async (req, res) => {
   }
 });
 
-// Crear una nova motocicleta
-router.post('/', async (req, res) => {
-  try {
-    const { marca, model, descripcio, potencia, categoriaId } = req.body;
-    await Motocicleta.create({ marca, model, descripcio, potencia, categoriaId });
-    res.redirect('/motocicletes');
-  } catch (error) {
-    res.status(500).send(error.message);
-  }
-});
+
 
 // Mostrar els detalls d'una motocicleta
 router.get('/:id', async (req, res) => {
