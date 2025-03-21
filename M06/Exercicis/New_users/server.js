@@ -11,7 +11,7 @@ app.use(cors());
 const usersRoutes = require('./routes/users');
 app.use('/api/users', usersRoutes);
 
-mongoose.connect('mongodb+srv://a18marcastru:mongodb@cluster24-25.38noo.mongodb.net/users', {
+mongoose.connect(, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
 })
