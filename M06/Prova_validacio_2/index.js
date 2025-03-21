@@ -1,7 +1,5 @@
 import { connectarBD, inserirAlumnes, obtenirAlumnes, tancarBD } from './db.js';
 
-const URI = 'mongodb+srv://a18marcastru:mongodb@cluster24-25.38noo.mongodb.net/';
-const DB_NAME = 'alumnesDB';
 const alumnesPerInserir = [
 
   { nom: 'Joan', edat: 18, curs: '2n Batx' },
